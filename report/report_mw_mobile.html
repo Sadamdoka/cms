@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>EMBASSY REPORTING PAGE</title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="../images/logo.png">
+
+
+        <!-- Form step -->
+        <link href="../vendor/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+
+        <link rel="stylesheet" href="../vendor/select2/select2.min.css">
+        <link rel="stylesheet" href="../vendor/select2-bootstrap-theme/select2-bootstrap.min.css">
+        <link href="../css/style.css" rel="stylesheet">
+
+
+    </head>
+
+    <body class="h-100">
+
+        <div class="authincation h-100" >
+            <div class="container-fluid h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-md-8">
+                        <div class="authincation-content">
+                            <div class="row">
+                                <div class="col-xl-12 col-xxl-12">
+
+                                    <div class="card" >
+                                        <div class="card-header">
+                                            <h4 class="card-title">Complaint Form</h4>
+                                        </div>
+                                        <div class="card-body" >
+                                            <form action="#" id="step-form-horizontal" class="step-form-horizontal"  >
+                                                <div style="height: 800px;">
+                                                    <h4>Introduction</h4>
+                                                    <section>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Do you know your Passport Number</label>  
+                                                                    <select class="form-control" aria-label="Default select example" id="status_pass" onchange="setPassport()">
+                                                                        <option id="1">NO</option>
+                                                                        <option id="2">YES</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label" id="label_passport" style="display: none">Passport Number</label>
+                                                                    <input type="text" class="form-control" id="mw_passport" placeholder="MW Passport Number" required  disabled  style="display: none">
+                                                                    <input type="text" class="form-control" id="mw_userid" style="display: none">
+                                                                    <input type="text" class="form-control" id="mw_lorg" style="display: none">
+                                                                    <input type="text" class="form-control" id="mw_org" style="display: none">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">  </label>
+                                                                    <button type="button" id="auto_btn" class="btn btn-info btn-block" style="display: none">Auto fill</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">First Name</label>
+                                                                    <input type="text" class="form-control" id="mw_name_f" placeholder="MW First Name" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="mw_name_m" placeholder="MW Middle Name" required>
+                                                                </div>
+                                                            </div>  
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Last Surname</label>
+                                                                    <input type="text" class="form-control" id="mw_name_s" placeholder="MW Surname" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Phone Number</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" id="mw_whatsapp_no" name="phoneNumber" class="form-control" placeholder="MW Mobile Phone & WhatsApp Contact" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <h4>Personal Info</h4>
+                                                    <section >
+                                                        <div class="row">
+
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Gender/Sex</label>
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_gender" required>
+
+                                                                        <option id="1">Male</option>
+                                                                        <option id="2">Female</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="col-lg-4 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Choose Job</label>
+                                                                    <select class="form-control"  id="mw_job" required>
+                                                                        <option data-tokens="Housemaid">Housemaid</option>
+                                                                        <option data-tokens="Female Cleaner">Female Cleaner</option>
+                                                                        <option data-tokens="Driver">Driver</option>
+                                                                        <option data-tokens="Labourer">Labourer</option>
+                                                                        <option data-tokens="Barrister">Barrister</option>
+                                                                        <option data-tokens="Male Cleaner">Male Cleaner</option>
+                                                                        <option data-tokens="Home Care">Home Care</option>
+                                                                        <option data-tokens="Rather Not Say">Rather Not Say</option>
+                                                                        <option data-tokens="Other">Other</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Do you have your passport?</label>
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_passport_status"  required>
+                                                                        <option>Yes, I have my passport</option>
+                                                                        <option>No, with my Employer/Client,  with my permission to keep it safe</option>
+                                                                        <option>No, with my Employer/Client without my permission</option>
+                                                                        <option>No, with my Foreign Agency/company with my permission for safe custody</option>
+                                                                        <option>No, with my Foreign Agency/company without my permission</option>
+                                                                        <option>No, Lost/Misplaced by myself</option>
+                                                                        <option>No, Lost or misplaced, by my Employer/Client</option>
+                                                                        <option>No, Lost/misplaced, by my Foreign Agent/Company</option>
+                                                                        <option>Yes, Expired</option>
+                                                                        <option>Information Not Available</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="col-lg-6 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Choose Current Location</label>
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_current_loca"  required>
+                                                                        <option>At Employer/Client</option>
+                                                                        <option>At Embassy</option>
+                                                                        <option>At Consulate</option>
+                                                                        <option>At Sakan</option>
+                                                                        <option>Foreign Office/Company</option>
+                                                                        <option>At Prison</option>
+                                                                        <option>At Police</option>
+                                                                        <option>At Hospital</option>
+                                                                        <option>At Deportation</option>
+                                                                        <option>At Uganda Embassy</option>
+                                                                        <option>Runaway and Hiding</option>
+                                                                        <option>Untraceable</option>
+                                                                        <option>At Airport</option>
+                                                                        <option>At Manpower in Oman</option>
+                                                                        <option>With Ugandan Community</option>
+                                                                        <option>At Labour in Jordan</option>
+                                                                        <option>Diseased/Death Case</option>
+                                                                        <option>Back in Uganda</option>
+                                                                        <option>With a Helper</option>
+                                                                        <option>At Foreign Embassy or Mission</option>
+                                                                        <option>On the Street</option>
+                                                                        <option>At Service Office (Maktab Khadamat)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+
+                                                        </div>
+                                                    </section>
+                                                    <h4>Residence Info</h4>
+                                                    <section>
+                                                        <div class="row">
+                                                            <div class="col-lg-6 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Country of Work</label>
+                                                                    <select class="form-control" data-style="btn-warning"  data-live-search="true" aria-label="Default select example" id="mw_country" onchange="loadCity()" required>
+                                                                       
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">City of Work</label>
+                                                                    <div class="input-group">
+                                                                        <select class="form-control" data-style="btn-warning" data-live-search="true" aria-label="Default select example" id="mw_address" required>
+                                                                            <option >Loading</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mb-4">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Training Center</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" id="ARR" placeholder="Training Center" required>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 mb-4">
+                                                                <div class="form-group"  id="lco_div">
+                                                                    <label class="text-label">Ugandan Recruitment Agency</label>  
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_lco" required>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 mb-4" id="fco_div">
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Foreign Recruitment Agency</label>
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_fco"  required>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 mb-4" >
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Employer Name</label>
+                                                                    <input type="text" class="form-control" id="mw_emp_name" placeholder="Name of the Employer"  required>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 mb-4" >
+                                                                <div class="form-group">
+                                                                    <label class="text-label">Employer Phone Number</label>
+                                                                    <input type="text" class="form-control" id="mw_emp_number" placeholder="Contacts of the Employer"  required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <h4>Case Details</h4>
+                                                    <section>
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mb-4" >
+                                                                <div class="form-group">
+                                                                    <label>How do you categorize the Main Complaint?(Select Cateogry Below)</label>
+                                                                    <select class="form-control" aria-label="Default select example" id="mw_comp_category"  required>
+                                                                        <option disabled selected hidden>Please Choose Case Category</option>
+                                                                        <option>COMPLIMENT/APPRECIATION</option>
+                                                                        <option>SALARY PAYMENT ASSISTANCE</option>
+                                                                        <option>PHONE/COMMUNICATION</option>
+                                                                        <option>UNTRACEABLE</option>
+                                                                        <option>WELFARE ASSISTANCE</option>
+                                                                        <option>MEDICAL ASSISTANCE</option>
+                                                                        <option>SEXUAL ABUSE ASSISTANCE</option>
+                                                                        <option>PHYSICAL ABUSE ASSISTANCE</option>
+                                                                        <option>ARREST/PRISON/DEPORTATION ASSISTANCE</option>
+                                                                        <option>SAKAN ASSISTANCE</option>
+                                                                        <option>EXIT VISA ASSISTANCE</option>
+                                                                        <option>AGENCY ABUSE ASSISTANCE</option>
+                                                                        <option>PASSPORT/TRAVEL DOCUMENT ASSISTANCE</option>
+                                                                        <option>FORCED LABOUR/HUMAN TRAFFICKING</option>
+                                                                        <option>INQUIRY/GUIDANCE</option>
+                                                                        <option>FALSE ACCUSATION ASSISTANCE</option>
+                                                                        <option>CONTRACT TERMINATION ASSISTANCE</option>
+                                                                        <option>RUNAWAY/ABSCONDER REPORT</option>
+                                                                        <option>MW MISCONDUCT REPORT</option>
+                                                                        <option>SOCIAL MEDIA ABUSE</option>
+                                                                        <option>CASE OVERDUE ASSISTANCE</option>
+                                                                        <option>DEATH CASE ASSISTANCE</option>
+                                                                    </select></div>
+                                                            </div>
+
+                                                            <div class="col-lg-12 mb-4" >
+                                                                <div class="form-group">
+                                                                    <label>COMPLAINT NARRATIVE</label>
+                                                                    <!--<input type="text" class="form-control" id="comp_narative" placeholder="COMPLAINT NARATIVE">-->
+                                                                    <textarea rows="8" class="form-control" id="comp_help" placeholder="Write details of your complaint and how you need to be helped"  required></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-12 mb-4" >
+                                                                <div class="form-group">
+                                                                    <label>Do you have any evidence of  Picture/Video/Document please attach here! </label>
+                                                                    <input type="file" class="form-control" id="mw_evidence" /> </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </section>
+
+                                                    <h4>Finish</h4>
+                                                    <section>
+                                                        <br>
+                                                        <br>  <div class="col-lg-12 mb-4" >
+                                                            <div class="form-group">
+                                                                <h3 class="text-center mb-4">Your Form is Complete please Proceed to Report </h3>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="col-lg-12 mb-4" >
+                                                            <div class="form-group">
+                                                                <input type="checkbox" class="form-check-input" id="info_check" value="">
+                                                                <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 mb-4" >
+                                                            <div class="form-group">
+                                                                <button type="submit" id="report_btn" class="btn btn-success btn-block">Report Case</button>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- #/ container-fluid -->
+        <!-- Common JS -->
+        <script src="../vendor/global/global.min.js"></script>
+
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="../vendor/select2/select2.min.js"></script>
+        <script src="../js/select2.js"></script>
+
+
+        <!-- Custom script -->
+        <script src="../vendor/quixnav/quixnav.min.js"></script>
+        <script src="../js/quixnav-init.js"></script>
+        <script src="../js/custom.min.js"></script>
+
+
+        <script src="../vendor/jquery-steps/build/jquery.steps.min.js"></script>
+        <script src="../vendor/jquery-validation/jquery.validate.min.js"></script>
+        <!-- Form validate init -->
+        <script src="../js/plugins-init/jquery.validate-init.js"></script>
+
+
+
+        <!-- Form step init -->
+        <script src="../js/plugins-init/jquery-steps-init.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+
+        <script src="../dash/constants.js"></script>
+        <script src="../dash/gen.js"></script>
+        <script src="../dash/report_case_mw.js"></script>
+    </body>
+
+</html>
