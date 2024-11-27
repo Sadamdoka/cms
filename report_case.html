@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>MGLSD MONITORING PORTAL </title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        </div>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <a href="home.html" class="brand-logo">
+                    <img class="logo-abbr" src="./images/logo.png" alt="">
+
+                    &nbsp;
+                    <div class="ms-2">
+                        <span id="user_name"></span>
+                    </div>
+                    <!--
+                    <img class="logo-compact" src="./images/logo-text.png" alt="">
+                    <img class="brand-title" src="./images/logo-text.png" alt="">
+                    -->
+                </a>
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+
+                     <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="search_bar dropdown">
+                                    <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                        <i class="mdi mdi-magnify"></i>
+                                    </span>
+                                    <div class="dropdown-menu p-0 m-0">
+                                        <form>
+                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <i class="mdi mdi-account"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">
+                                            <i class="icon-user"></i>
+                                            <span class="ml-2">Profile </span>
+                                        </a>
+                                        <a href="./index.html" class="dropdown-item">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="nav-label first">MGLSD MONITORING PORTAL</li>
+                        <li><a href="home.html" aria-expanded="false"><i class="icon icon-home"></i><span
+                                    class="nav-text">Home</span></a></li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-btn-play-2" ></i><span class="nav-text">Migrant Workers</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="worker.html" aria-expanded="false"><i class="icon icon-world-2"></i><span
+                                            class="nav-text">Migrant Workers</span></a></li>
+                                <li><a href="status.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
+                                            class="nav-text">MW Status Follow</span></a></li> 
+                            </ul>
+                        </li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-alert-circle-exc" ></i><span class="nav-text">Case Manager</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="mycase.html" aria-expanded="false"><i class="icon icon-tag"></i><span
+                                            class="nav-text">My Cases</span></a></li>
+                                <li id="gen_case" ><a href="case.html" aria-expanded="false"><i class="icon icon-time"></i><span
+                                            class="nav-text">General Cases</span></a></li>
+                                <li id="gen_high"><a href="highalert.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                            class="nav-text">High Alert Cases</span></a></li>
+                                <li id="gen_close"><a href="case_closed.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">Closed Cases</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li id="gen_co" style="display: block"><a href="company.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Users & Roles</span></a></li>
+                        <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Company Manager</span></a></li>
+                        <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Internal Report Case</span></a></li>
+                        <li><a href="report/report.html" target="_blank" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Report Link</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--**********************************
+                Sidebar end
+            ***********************************-->
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form>
+                                    <div class="auth-form">
+                                        <div class="form-row" style="display: none">
+                                            <div class="form-group col-md-12 unit whole">
+                                                <label>Who's Reporting :</label>
+                                                <select class="form-control" aria-label="Default select example" id="who" onchange="chooseWho()">
+                                                    <option selected>Open this to Select Individual Or Organization</option>
+                                                    <option id="1">Ugandan Migrant Worker myself</option>
+                                                    <option id="4">Ugandan Government Agency(Embassy,MGLSD,MOFA)</option>
+                                                    <option id="2">Others(UEARA, Agents, Recruitment Companies etc..)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="all_option" style="display: none">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 unit half">
+                                                    <input type="text" class="form-control" id="who_name" placeholder="Reporter Full Names" >
+                                                </div>
+                                                <div class="form-group col-md-6 unit half">
+                                                    <input type="text" class="form-control" id="who_tel" placeholder="Reporter Phone Number">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 unit half">
+                                                    <input type="text" class="form-control" id="who_email" placeholder="Reporter Email Address">
+                                                </div>
+                                                <div class="form-group col-md-6 unit half">
+                                                    <input type="text" class="form-control" id="who_city" placeholder="Reporter Address & City">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="option_embassy" style="display: none">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="official_name" placeholder="Official Name">
+                                                </div>
+
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="official_phone" placeholder="Official Phone">
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="official_email" placeholder="Official Email Address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="sor" style="display: none">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit half">
+                                                    <input type="text" class="form-control" id="source_info" placeholder="Source Of Information">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="option_migrant" style="display: none">
+                                        </div>
+                                        <div  id="all" style="display: none">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 unit whole">
+                                                    <select class="form-control" aria-label="Default select example" id="status_pass" onchange="setPassport()">
+                                                        <option selected>Do you know Migrant Worker Passport Number</option>
+                                                        <option id="1">NO</option>
+                                                        <option id="2">YES</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="mw_passport" placeholder="MW Passport Number" required  disabled  style="display: none">
+                                                    <input type="text" class="form-control" id="mw_userid" style="display: none">
+                                                    <input type="text" class="form-control" id="mw_lorg" style="display: none">
+                                                    <input type="text" class="form-control" id="mw_org" style="display: none">
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <button type="button" id="auto_btn" class="btn btn-info btn-block" style="display: none">Auto Fill</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="mw_name_f" placeholder="MW First Name" required>
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="mw_name_m" placeholder="MW Middle Name" required>
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="mw_name_s" placeholder="MW Surname" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="text" class="form-control" id="mw_whatsapp_no" placeholder="MW Mobile Phone & WhatsApp Contact" required>
+                                                </div>
+
+                                                <div class="form-group col-md-4 unit half">
+                                                    <input type="date" class="form-control" id="ARR" placeholder="Arrival Date" required>
+                                                </div>
+
+                                                <div class="form-group col-md-4 unit half">
+                                                    <select class="form-control" aria-label="Default select example" id="mw_gender" required>
+                                                        <option disabled selected hidden>Gender/Sex</option>
+                                                        <option id="1">Male</option>
+                                                        <option id="2">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 unit half">
+                                                    <select class="form-control"  id="mw_job" required>
+                                                        <option  disabled selected hidden>Choose Migrant Worker Job</option>
+                                                        <option data-tokens="Housemaid">Housemaid</option>
+                                                        <option data-tokens="Female Cleaner">Female Cleaner</option>
+                                                        <option data-tokens="Driver">Driver</option>
+                                                        <option data-tokens="Labourer">Labourer</option>
+                                                        <option data-tokens="Barrister">Barrister</option>
+                                                        <option data-tokens="Male Cleaner">Male Cleaner</option>
+                                                        <option data-tokens="Home Care">Home Care</option>
+                                                        <option data-tokens="Rather Not Say">Rather Not Say</option>
+                                                        <option data-tokens="Other">Other</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4 unit half">
+                                                    <select class="form-control" data-style="btn-warning"  data-live-search="true" aria-label="Default select example" id="mw_country" onchange="loadCity()" required>
+                                                   
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4 unit half">
+                                                    <select class="form-control" data-style="btn-warning" data-live-search="true" aria-label="Default select example" id="mw_address" required>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 unit half" id="lco_div" >
+                                                    <select class="form-control" aria-label="Default select example" id="mw_lco"  required>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6 unit half" id="fco_div">
+                                                    <select class="form-control" aria-label="Default select example" id="mw_fco"  required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 unit whole">
+                                                    <input type="text" class="form-control" id="mw_emp_name" placeholder="Name of the Employer"  required>
+                                                </div>
+
+                                                <div class="form-group col-md-6 unit whole">
+                                                    <input type="text" class="form-control" id="mw_emp_number" placeholder="Contacts of the Employer"  required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 unit half">
+                                                    <select class="form-control" aria-label="Default select example" id="mw_current_loca"  required>
+                                                        <option  disabled selected hidden >Choose Migrant Worker Current Location</option>
+                                                        <option>At Employer/Client</option>
+                                                        <option>At Embassy</option>
+                                                        <option>At Consulate</option>
+                                                        <option>Foreign Office/Company</option>
+                                                        <option>At Prison</option>
+                                                        <option>At Police</option>
+                                                        <option>At Hospital</option>
+                                                        <option>At Deportation</option>
+                                                        <option>At Uganda Embassy</option>
+                                                        <option>Runaway and Hiding</option>
+                                                        <option>Untraceable</option>
+                                                        <option>At Airport</option>
+                                                        <option>At Manpower in Oman</option>
+                                                        <option>With Ugandan Community</option>
+                                                        <option>At Labour in Jordan</option>
+                                                        <option>Diseased/Death Case</option>
+                                                        <option>Back in Uganda</option>
+                                                        <option>With a Helper</option>
+                                                        <option>At Foreign Embassy or Mission</option>
+                                                        <option>On the Street</option>
+                                                        <option>At Service Office (Maktab Khadamat)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6 unit half">
+                                                    <select class="form-control" aria-label="Default select example" id="mw_passport_status"  required>
+                                                        <option  disabled selected hidden >Do you have your passport?(Migrant Worker)</option>
+                                                        <option>Yes, I have my passport</option>
+                                                        <option>No, with my Employer/Client,  with my permission to keep it safe</option>
+                                                        <option>No, with my Employer/Client without my permission</option>
+                                                        <option>No, with my Foreign Agency/company with my permission for safe custody</option>
+                                                        <option>No, with my Foreign Agency/company without my permission</option>
+                                                        <option>No, Lost/Misplaced by myself</option>
+                                                        <option>No, Lost or misplaced, by my Employer/Client</option>
+                                                        <option>No, Lost/misplaced, by my Foreign Agent/Company</option>
+                                                        <option>Yes, Expired</option>
+                                                        <option>Information Not Available</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row" style="display: none">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <select class="form-control" aria-label="Default select example" id="mw_emp_sector">
+                                                        <option disabled selected hidden>Select Employment Sector</option>
+                                                        <option id="1">Domestic Worker Sector</option>
+                                                        <option id="2">Non Domestic Worker Sector</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="mw" >
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <label>How do you categorize the Main Complaint?</label>
+                                                    <select class="form-control" aria-label="Default select example" id="mw_comp_category"  required>
+                                                        <option disabled selected hidden>Please Choose Case Category</option>
+                                                        <option>COMPLIMENT/APPRECIATION</option>
+                                                        <option>SALARY PAYMENT ASSISTANCE</option>
+                                                        <option>PHONE/COMMUNICATION</option>
+                                                        <option>UNTRACEABLE</option>
+                                                        <option>WELFARE ASSISTANCE</option>
+                                                        <option>MEDICAL ASSISTANCE</option>
+                                                        <option>SEXUAL ABUSE ASSISTANCE</option>
+                                                        <option>PHYSICAL ABUSE ASSISTANCE</option>
+                                                        <option>PASSPORT/TRAVEL DOCUMENT</option>
+                                                        <option>ARREST/PRISON/DEPORTATION ASSISTANCE</option>
+                                                        <option>SAKAN ASSISTANCE</option>
+                                                        <option>EXIT VISA ASSISTANCE</option>
+                                                        <option>AGENCY ABUSE ASSISTANCE</option>
+                                                        <option>PASSPORT/TRAVEL DOCUMENT ASSISTANCE</option>
+                                                        <option>FORCED LABOUR/HUMAN TRAFFICKING</option>
+                                                        <option>INQUIRY/GUIDANCE</option>
+                                                        <option>FALSE ACCUSATION ASSISTANCE</option>
+                                                        <option>CONTRACT TERMINATION ASSISTANCE</option>
+                                                        <option>RUNAWAY/ABSCONDER REPORT</option>
+                                                        <option>MW MISCONDUCT REPORT</option>
+                                                        <option>SOCIAL MEDIA ABUSE</option>
+                                                        <option>CASE OVERDUE ASSISTANCE</option>
+                                                        <option>DEATH CASE ASSISTANCE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <label>COMPLAINT NARRATIVE</label>
+                                                    <!--<input type="text" class="form-control" id="comp_narative" placeholder="COMPLAINT NARATIVE">-->
+                                                    <textarea rows="5" class="form-control" id="comp_help" placeholder="Write details of your complaint and how you need to be helped"  required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="mw_all_cat">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <p></p>
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-row" >
+                                                <div class="form-group col-md-6 unit one-quarter" style="display: none">
+                                                    <label>PDF Documents Attachment</label>
+                                                    <input type="file" class="form-control" id="mw_other_doc" />
+                                                </div>
+                                                <div class="form-group col-md-4 unit one-quarter" style="display: none">
+                                                    <label >Attach or upload Passport Size Photograph of the Migrant Worker</label>
+                                                    <input type="file" class="form-control" id="mw_pic" />
+                                                </div>
+
+                                                <div class="form-group col-md-6 unit one-quarter" >
+                                                    <label>Complaint Evidence Image/Picture Attachment</label>
+                                                    <input type="file" class="form-control" id="mw_evidence" />
+                                                </div>
+
+
+                                                <div class="form-group col-md-4 unit one-quarter" >
+                                                    <label>Complaint Evidence Video/Audio Attachment</label>
+                                                    <input type="file" class="form-control" id="mw_ev_video" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <input type="checkbox" class="form-check-input" id="info_check" value="">
+                                                    <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <button type="submit" id="report_btn" class="btn btn-primary btn-block">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Powered by <a href="#" target="_blank">MLGSD</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="./vendor/global/global.min.js"></script>
+        <script src="./js/quixnav-init.js"></script>
+        <script src="./js/custom.min.js"></script>
+
+
+        <!-- Vectormap -->
+        <script src="./vendor/raphael/raphael.min.js"></script>
+        <script src="./vendor/morris/morris.min.js"></script>
+
+
+        <script src="./vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+
+        <script src="./vendor/gaugeJS/dist/gauge.min.js"></script>
+
+        <!--  flot-chart js -->
+        <script src="./vendor/flot/jquery.flot.js"></script>
+        <script src="./vendor/flot/jquery.flot.resize.js"></script>
+
+        <!-- Owl Carousel -->
+        <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+        <!-- Counter Up -->
+        <script src="./vendor/jqvmap/js/jquery.vmap.min.js"></script>
+        <script src="./vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+        <script src="./vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+        <!-- Datatable -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./js/plugins-init/datatables.init.js"></script><!-- comment -->
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+        <script src="./js/dashboard/dashboard-1.js"></script>
+
+
+        <script src="dash/constants.js"></script>
+        <script src="dash/gen.js"></script>
+        <script src="dash/report_internal.js"></script>
+
+    </body>
+
+</html>

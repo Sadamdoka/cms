@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>EMBASSY REPORTING PAGE</title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+        <link href="./css/style.css" rel="stylesheet">
+
+    </head>
+
+    <body class="h-100">
+        <div class="authincation h-100">
+            <div class="container-fluid h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-md-8">
+                        <div class="authincation-content">
+                            <div class="row no-gutters">
+                                <div class="col-xl-12">
+                                    <div class="auth-form">
+
+                                        <div class="text-center">
+                                            <img src="./images/logo.png" width="200px" height="200px" class="img-fluid" alt="Responsive image">
+                                        </div>
+                                        <br></br><!-- comment -->
+                                        <h2 class="text-center mb-4">UGANDAN EMBASSY IN RIYADH</h2>
+                                        <h4 class="text-center mb-4">Fill In below Form to Report Case</h4>
+                                        <div class="grid">
+                                            <h1 ><span>Note!</span></h1>
+                                            <h6 >Please register your complaint online and we will get the required information. Several officers access and collaborate on cases instead of relying on one officer via WhatsApp or phone call. This reduces the time spent to re-register complaints on the system after receiving them on WhatsApp or through phone calls.  Our Officers can focus on resolving submitted cases instead of registering complaints.
+                                            </h6>
+                                            <h6>
+                                                We triage all cases and action priority is given based on emergency, importance, and capacity.  But we ensure that all cases are handled and thus a case ticket number is issued for every complaint registered.  If a  case ticket number is not provided within 48 working hours, please send a text message to +966567826817.  Please be advised that this number will only attend to inquiries about the case ticket number. Audio messages, video messages, and chat messages to this number will NOT be attended to.
+                                            </h6>
+                                            <h6>
+                                                You may not be aware but we serve many Ugandans, and the way we receive your information helps us to serve you better as well as other Ugandans. Incomplete information, chatting, audios, videos, and picture methods of communication to various parties hinder our turnaround time in resolving cases due to the delays faced when analyzing this content and in the long run other Ugandans are denied an opportunity of service.  
+                                            </h6>
+                                            <h6>
+                                                We continue doing our best to improve our services.
+                                            </h6>
+                                            <h6>
+                                                Disclaimer; The information submitted through this form is confidential, privileged, and only for the information of the Embassy, its subsidiaries and agents, however will be used, published or redistributed without the prior consent of the sender. While every care has been taken in preparing this form, the Embassy makes no representations and gives no warranty of whatever nature in respect to the responses of this form, including but not limited to accuracy and completeness of any information, facts and or opinions contained therein. The Embassy, its subsidiaries and agents can't be held liable for the use of and reliance of the opinions, estimates and findings in the form responses.
+                                            </h6>
+                                            <h6>
+                                                *NA or Unknown (Please indicate "NA or Unknown" for the information you don't have)
+                                                *Submit = (Don't forget to press the last blue button to submit after filling the form, and you will see a message indicating that your form has been submitted)
+                                            </h6>
+
+                                        </div>
+
+                                        <div>
+                                            <h3 id="color-text-red">How to report</h3>
+                                            <iframe width="100%" height="400" src="https://www.youtube.com/embed/iizKuMR9D2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+
+                                        <h3 id="color-text-red">Case Information</h3>
+
+
+                                        <h6>Please Fill in Form.</h6>
+                                        <form id="case_form">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 unit whole">
+                                                    <label>Who's Reporting :</label>
+                                                    <select class="form-control" aria-label="Default select example" id="who" onchange="chooseWho()">
+                                                        <option selected>Open this to Select Individual Or Organisation</option>
+                                                        <option id="1">Ugandan Migrant Worker myself</option>
+                                                        <option id="2">Relative</option>
+                                                        <option id="3">Friend/Helper/Volunteer</option>
+                                                        <option id="4">Uganda Embassy Riyadh</option>
+                                                        <option id="5">Ugandan Recruitment Agency</option>
+                                                        <option id="6">UAERA</option>
+                                                        <option id="7">MGLSD</option>
+                                                        <option id="8">MOFA</option>
+                                                        <option id="9">NGO</option>
+                                                        <option id="10">Certified Embassy Agent</option>
+                                                        <option id="11">Saudi Recruitment Agency</option>
+                                                        <option id="12">RAA - Jordan Recruitment Agencies Association (RAA)</option>
+                                                        <option id="13">Jordan Recruitment Agency</option>
+                                                        <option id="14">Oman Recruitment Agency</option>
+                                                        <option id="15">Bahrain Recruitment Agency</option>
+                                                        <option id="16">Kuwait Recruitment Agency</option>
+                                                        <option id="17">Employer Reporting/Complaining</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div id="all_option" style="display: none">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Reporter Full Names</label>
+                                                        <input type="text" class="form-control" id="who_name" placeholder="Reporter Full Names">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputPassword4">Reporter Phone Number</label>
+                                                        <input type="text" class="form-control" id="who_tel" placeholder="Reporter Phone Number">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Reporter Email Address</label>
+                                                        <input type="text" class="form-control" id="who_email" placeholder="Reporter Email Address">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputPassword4">Reporter Address & City</label>
+                                                        <input type="text" class="form-control" id="who_city" placeholder="Reporter Address & City">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12 unit whole">
+
+                                                        <label for="inputPassword4">Information Source</label>
+                                                        <input type="text" class="form-control" id="source_info" placeholder="Information Source"> <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="option_embassy" style="display: none">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Official Name</label>
+                                                        <input type="text" class="form-control" id="official_name" placeholder="Official Name">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputPassword4">Official Email Address</label>
+                                                        <input type="text" class="form-control" id="official_email" placeholder="Official Email Address">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12 unit whole">
+                                                        <label for="inputPassword4">Information Source</label>
+                                                        <input type="text" class="form-control" id="official_source" placeholder="Information Source"> <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="option_migrant" style="display: none">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12 unit whole">
+                                                        <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div  id="all" style="display: none">
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Migrant Worker Full Names</label>
+                                                        <input type="text" class="form-control" id="mw_name" placeholder="Migrant Worker Full Names">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Migrant Worker Passport Number</label>
+                                                        <input type="text" class="form-control" id="mw_passport" placeholder="Migrant Worker Passport Number">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="">Migrant Worker Job</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_job">
+                                                            <option selected>Open this to Choose Migrant Worker Job</option>
+                                                            <option>Housemaid</option>
+                                                            <option>Female Cleaner</option>
+                                                            <option>Driver</option>
+                                                            <option>Labourer</option>
+                                                            <option>Barrister</option>
+                                                            <option>Male Cleaner</option>
+                                                            <option>Home Care</option>
+                                                            <option>Rather Not Say</option>
+                                                            <option>Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="">Migrant Worker Country</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_country">
+                                                            <option selected>Open this to Choose Migrant Worker Country</option>
+                                                            <option>Saudi Arabia</option>
+                                                            <option>Jordan</option>
+                                                            <option>Oman</option>
+                                                            <option>Kuwait</option>
+                                                            <option>Bahrain</option>
+                                                            <option>Yemen</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">City/Town of Residence of the Migrant Worker</label>
+                                                        <input type="text" class="form-control" id="mw_city_residence" placeholder="City/Town of Residence of the Migrant Worker">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Employment Contract Number.</label>
+                                                        <input type="text" class="form-control" id="mw_contract_no" placeholder="Employment Contract Number.">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Date of Birth</label>
+                                                        <input type="text" class="form-control" id="mw_dob" placeholder="Date of Birth">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Place of Birth</label>
+                                                        <input type="text" class="form-control" id="mw_pob" placeholder="Place of Birth">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Address in Uganda</label>
+                                                        <input type="text" class="form-control" id="mw_uganda_address" placeholder="Address in Uganda">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Work Permit Number</label>
+                                                        <input type="text" class="form-control" id="mw_iqama" placeholder="Work Permit Number">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Date of Arrival in Country of Residence</label>
+                                                        <input type="text" class="form-control" id="mw_arrival_date" placeholder="Date of Arrival in Country of Residence">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Date and Time escaped/left Employer home or Agency</label>
+                                                        <input type="text" class="form-control" id="mw_escaped" placeholder="Date and Time escaped/left Employer home or Agency">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Mobile Phone & WhatsApp Contact of Migrant Worker</label>
+                                                        <input type="text" class="form-control" id="mw_whatsapp_no" placeholder="Mobile Phone & WhatsApp Contact of Migrant Worker">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Email Address of the Migrant worker</label>
+                                                        <input type="text" class="form-control" id="mw_email" placeholder="Email Address of the Migrant worker">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Choose Ugandan/Sending Recruitment Agency/Agent</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_lco">
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Choose Saudi/Recieving Recruitment Agency</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_fco">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12 unit whole">
+                                                        <label for="inputEmail4">Name and Contacts of the Employer</label>
+                                                        <input type="text" class="form-control" id="mw_employer" placeholder="Name and Contacts of the Employer">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="">Current Location/Place of the Migrant worker</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_current_loca">
+                                                            <option selected>Open this to Choose Migrant Worker Current Location</option>
+                                                            <option>At Employer/Client</option>
+                                                            <option>Foreign Office/Company</option>
+                                                            <option>At Prison</option>
+                                                            <option>At Police</option>
+                                                            <option>At Hospital</option>
+                                                            <option>At Deportation</option>
+                                                            <option>At Uganda Embassy</option>
+                                                            <option>Runaway and Hiding</option>
+                                                            <option>Untraceable</option>
+                                                            <option>At Airport</option>
+                                                            <option>At Manpower in Oman</option>
+                                                            <option>With Ugandan Community</option>
+                                                            <option>At Labour in Jordan</option>
+                                                            <option>Diseased/Death Case</option>
+                                                            <option>Back in Uganda</option>
+                                                            <option>With a Helper</option>
+                                                            <option>At Foreign Embassy or Mission</option>
+                                                            <option>On the Street</option>
+                                                            <option>At Service Office (Maktab Khadamat)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="">Passport Availability Status</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_passport_status">
+                                                            <option selected>Do you have your passport?</option>
+                                                            <option>Yes, I have my passport</option>
+                                                            <option>No, with my Employer/Client,  with my permission to keep it safe</option>
+                                                            <option>No, with my Employer/Client without my permission</option>
+                                                            <option>No, with my Foreign Agency/company with my permission for safe custody</option>
+                                                            <option>No, with my Foreign Agency/company without my permission</option>
+                                                            <option>No, Lost/Misplaced by myself</option>
+                                                            <option>No, Lost or misplaced, by my Employer/Client</option>
+                                                            <option>No, Lost/misplaced, by my Foreign Agent/Company</option>
+                                                            <option>Yes, Expired</option>
+                                                            <option>Information Not Available</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Status on communication with Employer / Office</label>
+                                                        <input type="text" class="form-control" id="mw_communication_status" placeholder="Status on communication with Employer / Office">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Pre-Departure Training Center</label>
+                                                        <input type="text" class="form-control" id="mw_training_center" placeholder="Pre-Departure Training Center">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Pre-Medical Center</label>
+                                                        <input type="text" class="form-control" id="mw_medical_center" placeholder="Pre-Departure Training Center">
+                                                    </div>
+                                                    <div class="form-group col-md-6 unit half">
+                                                        <label for="inputEmail4">Worked in other Countries</label>
+                                                        <input type="text" class="form-control" id="mw_worked_other_countries" placeholder="Worked in other Countries">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12 unit whole">
+                                                        <label>Employment Sector</label>
+                                                        <select class="form-control" aria-label="Default select example" id="mw_emp_sector" onchange="chooseSector()">
+                                                            <option selected>Open this to Select Employment Sector</option>
+                                                            <option id="1">Domestic Worker Sector</option>
+                                                            <option id="2">Non Domestic Worker Sector</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div id="yes_mw" style="display: none">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="inputEmail4">DOMESTIC WORKER COMPLAINT</label>
+                                                            <input type="text" class="form-control" id="mw_complaint" placeholder="DOMESTIC WORKER COMPLAINT" style="display: none">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label>How do you want to register a complaint</label>
+                                                            <select class="form-control" aria-label="Default select example" id="case_cat" onchange="chooseCaseDetails()">
+                                                                <option selected>Open this to Select</option>
+                                                                <option id="1">Detailed Reporting</option>
+                                                                <option id="2">Brief Reporting</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="det_mw" style="display: none">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>DETAILED DOMESTIC WORKER COMPLAINT</p>
+                                                            <p>This section enables the Embassy to ascertain the main areas of contract violations in your complaint. You are reminded to state factual and correct information to avoid any reprimand.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">Houses changed</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_house_status">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Has not changed a house</option>
+                                                                <option>This is 2nd Employer House</option>
+                                                                <option>This is 3rd Employers House</option>
+                                                                <option>Changed 4 or more Houses</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">TELEPHONE</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_tel_status">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>YES, Allowed to use a phone during my free time</option>
+                                                                <option>NO, I am denied a phone</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">DEMANDED SALARY  AMOUNT</label>
+                                                            <input type="text" class="form-control" id="mw_salary_status" placeholder="Amount Demanding (Example: 1 month SR 900, 2 Month SR1800, 3 Moths SR 2700. Please indicate amount in number">
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">DEMANDED SALARY NARATIVE</label>
+                                                            <input type="text" class="form-control" id="mw_salary_narative" placeholder="State the months you have not received salary in details">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">FOOD</label>
+                                                            <input type="text" class="form-control" id="mw_food_status" placeholder="How many meals are you getting daily on average?">
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">RESTING TIME</label>
+                                                            <input type="text" class="form-control" id="mw_resting_time" placeholder="Please indicate the number of hours you get to rest on average? (Add the total hours you get at night plus the hours you get during day time)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="">SLEEPING FACILITY</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_sleeping_facility">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Decent</option>
+                                                                <option>Not Decent</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">SLEEPING TIME AT NIGHT</label>
+                                                            <input type="text" class="form-control" id="mw_sleep_hours" placeholder="At what time are you permitted to go and sleep">
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">WAKE UP TIME AT NIGHT</label>
+                                                            <input type="text" class="form-control" id="mw_wake_time" placeholder="At what time do you wake up in the morning">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit one-third">
+                                                            <label for="inputEmail4">RESTING TIME DURING DAY TIME</label>
+                                                            <input type="text" class="form-control" id="mw_resting_day" placeholder="How many hours are you allowed to rest during day time">
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit one-third">
+                                                            <label for="inputEmail4">HOUSEWORK SIZE</label>
+                                                            <input type="text" class="form-control" id="mw_work_size" placeholder="Please indicate the total of Bedrooms and seating rooms cleaned or make daily">
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit one-third">
+                                                            <label for="inputEmail4">FAMILY SIZE</label>
+                                                            <input type="text" class="form-control" id="mw_family_size" placeholder="Total number of family members you serve in the home/house">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">AVAILABILITY OF ANOTHER HOUSEMAID</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_other_worker">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>No, I work alone</option>
+                                                                <option>Yes, Available</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">NON-CONTRACT JOBS</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_non_contract">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>No, I don't do Non Contract Jobs (Example farming, building, Nursing Care, etc)</option>
+                                                                <option>Yes, I am made to do Non Contract Jobs (Example farming, building, Nursing Care, etc)</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">WORKING IN OTHER HOUSES</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_other_houses">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>I only work for my employer</option>
+                                                                <option>I work in other houses but I am ok and not complaining</option>
+                                                                <option>I am forced to work in other houses and I need help</option>
+                                                                <option>Information not available</option>
+                                                                <option>Not Applicable</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">MEDICAL</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_medical_status">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>I am Ok I don't need medical</option>
+                                                                <option>MEDICAL ASSISTANCE (I need medical and I continue with my work)</option>
+                                                                <option>TERMINATION (I am medically proved not capable of working)</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="no_mw" style="display: none">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">PHYSICAL ABUSE/BEATING</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_physical_abuse">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>No, I am not Physically abused</option>
+                                                                <option>Yes, I am Physically Abused and I have evidence</option>
+                                                                <option>Yes, I am Physically Abused but I don't have evidence</option>
+                                                                <option>Information not available</option>
+                                                                <option>Not Applicable</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">SEXUAL COMPLAINT</label>
+                                                            <input type="text" class="form-control" id="mw_sexual_comp" placeholder="Briefly explain the sexual related complaint">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="">EMPLOYER CHANGE OR FORCED TRANSFER</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_force_transfer">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>I have not been transferred</option>
+                                                                <option>CONTRACT TRANSFER (I have been transferred to another employer and I am Ok but with no contract)</option>
+                                                                <option>FORCED LABOUR/HUMAN TRAFICKING (I have been transferred to another employer without my consent and I need help)</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>COMPLAINT AGAINST FOREIGN AGENCY</p>
+                                                            <p>Example; not following up on you after deployment, not assisting you when you have a problem, poor sleeping facility, food, physical abuse or beating, sexual, taking your money, transfer to another employer employer without your consent and signing a contract, etc.</p>
+                                                            <input type="text" class="form-control" id="mw_comp_foreign" placeholder="Details">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>COMPLAINT AGAINST UGANDAN AGENCY</p>
+                                                            <p>Example not training you, not doing medical, not following on you, not assisting you or responding when you have a problem, taking money from you etc..</p>
+                                                            <input type="text" class="form-control" id="mw_comp_local" placeholder="Details">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>OTHER COMPLAINTS</p>
+                                                            <p>Please indicate if there is any other complaint not mentioned above.</p>
+                                                            <input type="text" class="form-control" id="mw_comp_other" placeholder="Details">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label>End Of Contract Status</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_contract_status">
+                                                                <option selected>Open this to Select</option>
+                                                                <option>I have not Finished my contract</option>
+                                                                <option>FORCED LABOUR (I have Finished my contract but I am Denied to return home)</option>
+                                                                <option>CONTRACT RENEWAL (I have Finished my contract and renewed with my employer)</option>
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>DOMESTIC WORKER EVALUATION</p>
+                                                            <p>Please use this section to evaluate the attitude towards work of the migrant worker</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-4 unit one-third">
+                                                            <label for="">ARE YOU DOING YOUR CONTRACT WORK CORRECTLY?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="ev_work_correctly">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Yes</option>
+                                                                <option>No</option>  
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-4 unit one-third">
+                                                            <label for="">DO YOU WAKE UP ON TIME? IF YES WHAT TIME ON AVERAGE?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="ev_wake_on_time">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Yes</option>
+                                                                <option>No</option>  
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group col-md-4 unit one-third">
+                                                            <label for="">DO YOU USE THE PHONE & SOCIAL MEDIA CORRECTLY AND IN THE RIGHT TIME?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="ev_phone_usage">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Yes</option>
+                                                                <option>No</option>  
+                                                                <option>Information Not Available</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">HOW IS YOUR PERSONAL HYGIENE?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="ev_hygiene">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Extremely Dirty</option>
+                                                                <option>Dirty</option>
+                                                                <option>Manageable</option>
+                                                                <option>Clean</option>
+                                                                <option>Extremely Clean</option>
+                                                                <option>Information not available</option>
+                                                                <option>Not Applicable</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">WHAT DOES YOUR EMPLOYER COMPLAIN ABOUT YOU?</label>
+                                                            <input type="text" class="form-control" id="ev_comp_employer" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="">DO YOU GIVE GOOD CUSTOMER SERVICE TO YOUR EMPLOYER/CLIENT & HOW?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="ev_customer_service">
+                                                                <option selected>Open this to Choose</option>
+                                                                <option>Extremely Poor</option>
+                                                                <option>Poor</option>
+                                                                <option>Good</option>
+                                                                <option>Extremely Good</option>
+                                                                <option>Information not available</option>
+                                                                <option>Not Applicable</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6 unit half">
+                                                            <label for="inputEmail4">FINANCIAL OBJECTIVE OF 2 YEARS CONTRACT & ACHIEVEMENTS</label>
+                                                            <input type="text" class="form-control" id="mw_fin_objective" placeholder="What was the your financial objective or Goal of the 2 years contract, and what have you achieved or done back home as a result of you working as abroad?">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="inputEmail4">ASSISTANCE NEEDED</label>
+                                                            <input type="text" class="form-control" id="assistance" placeholder="ASSISTANCE NEEDED">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="mw" style="display: none">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="inputEmail4">COMPLAINT NARATIVE</label>
+
+                                                            <!--<input type="text" class="form-control" id="comp_narative" placeholder="COMPLAINT NARATIVE">-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label for="inputEmail4">Write details of your complaint and how you need to be helped</label>
+                                                            <input type="text" class="form-control" id="comp_help" placeholder="Write details of your complaint and how you need to be helped">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="mw_all_cat" style="display: none">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <p>SUPPORTING DOCUMENTS OR INFORMATION</p>
+                                                            <p>This section is optional, however the information provided will enable the Embassy to verify and appropriately handle the case in a timely manner.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row" style="display: none">
+                                                        <div class="form-group col-md-4 unit one-quarter">
+                                                            <label for="">PDF Documents Attachment</label>
+                                                            <input type="file" class="form-control" id="mw_other_doc" />
+                                                        </div>
+                                                        <div class="form-group col-md-4 unit one-quarter">
+                                                            <label for="">Attach or upload Passport Size Photograph of the Migrant Worker</label>
+                                                            <input type="file" class="form-control" id="mw_pic" />
+                                                        </div>
+
+                                                        <div class="form-group col-md-4 unit one-quarter">
+                                                            <label for="">Complaint Evidence Image/Picture Attachment</label>
+                                                            <input type="file" class="form-control" id="mw_evidence" />
+                                                        </div>
+
+
+                                                        <div class="form-group col-md-4 unit one-quarter">
+                                                            <label for="">Complaint Evidence Video Attachment</label>
+                                                            <input type="file" class="form-control" id="mw_ev_video" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <label>How do you categorize the Main Complaint?</label>
+                                                            <select class="form-control" aria-label="Default select example" id="mw_comp_category">
+                                                                <option selected>Open this to Select</option>
+                                                                <option>SALARY & TRANSFER FACILITATION</option>
+                                                                <option>CONTRACT/WELFARE VIOLATION/DISPUTE</option>
+                                                                <option>MEDICAL ASSISTANCE</option>
+                                                                <option>PREGNANCY/BABY ASSISTANCE</option>
+                                                                <option>SEXUAL/PHYSICAL ABUSE</option>
+                                                                <option>MISSING/UNTRACEABLE</option>
+                                                                <option>RUNAWAY/ABSCONDER</option>
+                                                                <option>ILLEGAL EXTERNALIZATION</option>
+                                                                <option>DEATH CASE ASSISTANCE</option>
+                                                                <option>CONTRACT TERMINATION</option>
+                                                                <option>PRISON/POLICE/DEPORTATION LEGAL/CONSULAR ASSISTANCE</option>
+                                                                <option>SOCIAL MEDIA ABUSE</option>
+                                                                <option>MIGRANT MISCONDUCT</option>
+                                                                <option>RIOT/DEMONSTRATION</option>
+                                                                <option>CASE OVERDUE/UNRESOLVED</option>
+                                                                <option>FORCED LABOUR/HUMAN TRAFFICKING</option>
+                                                                <option>EXIT VISA ASSISTANCE</option>
+                                                                <option>INQUIRY</option>
+                                                                <option>GROUP CASE ASSISTANCE</option>
+                                                                <option>COMPLIMENT EMPLOYER/AGENCY/GOVERNMENT</option>
+                                                                <option>AGENCY ABUSE/VIOLATION</option>
+                                                                <option>FALSE ACCUSATION</option>
+                                                                <option>PSYCHIATRIC ASSISTANCE</option>
+                                                                <option>FALSE ACCUSATION</option>
+                                                                <option>TRAINING VIOLATION</option>
+                                                                <option>GENERAL/OTHER</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12 unit whole">
+                                                            <button type="submit" id="report_btn" class="btn btn-primary btn-block">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- #/ container-fluid -->
+        <!-- Common JS -->
+        <script src="./vendor/global/global.min.js"></script>
+        <!-- Custom script -->
+        <script src="./vendor/quixnav/quixnav.min.js"></script>
+        <script src="./js/quixnav-init.js"></script>
+        <script src="./js/custom.min.js"></script>
+
+
+        <script src="dash/constants.js"></script>
+        <script src="dash/gen.js"></script>
+        <script src="dash/report_case.js"></script>
+
+    </body>
+
+</html>

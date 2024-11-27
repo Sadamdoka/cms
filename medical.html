@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>MGLSD MONITORING PORTAL </title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        </div>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <a href="home.html" class="brand-logo">
+                    <img class="logo-abbr" src="./images/logo.png" alt="">
+
+                    &nbsp;
+                    <div class="ms-2">
+                        <span id="user_name"></span>
+                    </div>
+                    <!--
+                    <img class="logo-compact" src="./images/logo-text.png" alt="">
+                    <img class="brand-title" src="./images/logo-text.png" alt="">
+                    -->
+                </a>
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="search_bar dropdown">
+                                    <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                        <i class="mdi mdi-magnify"></i>
+                                    </span>
+                                    <div class="dropdown-menu p-0 m-0">
+                                        <form>
+                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <i class="mdi mdi-account"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">
+                                            <i class="icon-user"></i>
+                                            <span class="ml-2">Profile </span>
+                                        </a>
+                                        <a href="./index.html" class="dropdown-item">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="nav-label first">MGLSD MONITORING PORTAL</li>
+                        <li><a href="home.html" aria-expanded="false"><i class="icon icon-home"></i><span
+                                    class="nav-text">Home</span></a></li>
+
+                        <li><a href="details.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Accreditation</span></a></li>
+
+                        <li><a href="job_orders.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Job Orders</span></a></li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-btn-play-2" ></i><span class="nav-text">Migrant Workers</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="register.html" aria-expanded="false" target="_blank"><i class="icon icon-attach-87"></i><span
+                                            class="nav-text">Registration</span></a></li>
+                                <li><a href="worker.html" aria-expanded="false"><i class="icon icon-world-2"></i><span
+                                            class="nav-text">Migrant Workers</span></a></li>
+                                <li><a href="status.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
+                                            class="nav-text">MW Status Follow</span></a></li>    
+                                <li><a href="accomodation.html"  aria-expanded="false"><i class="icon icon-home-minimal"></i><span
+                                            class="nav-text">Accommodation</span></a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-alert-circle-exc" ></i><span class="nav-text">MW Contract Manager</span></a>
+                            <ul aria-expanded="false">
+                                <li id="gen_cont_new"><a href="contract.html" aria-expanded="false"><i class="icon icon-tag"></i><span
+                                            class="nav-text">Pending Review</span></a></li>
+                                <li id="gen_cont_app" ><a href="cr_pending.html" aria-expanded="false"><i class="icon icon-time"></i><span
+                                            class="nav-text">Pending Approval</span></a></li>
+                                <li id="gen_cont_gen"><a href="contract_all.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">General</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-alert-circle-exc" ></i><span class="nav-text">Case Manager</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="mycase.html" aria-expanded="false"><i class="icon icon-tag"></i><span
+                                            class="nav-text">My Cases</span></a></li>
+                                <li><a href="prison.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">Prison</span></a></li>
+                                <li><a href="medical.html"  aria-expanded="false"><i class="icon icon-single-copies"></i><span
+                                            class="nav-text">Medical</span></a></li>
+                                <li><a href="runaway.html"  aria-expanded="false"><i class="icon icon-single-copies"></i><span
+                                            class="nav-text">Run Aways</span></a></li>
+                                <li><a href="death.html"  aria-expanded="false"><i class="icon icon-single-copies"></i><span
+                                            class="nav-text">Death</span></a></li>
+                                <li id="gen_case" ><a href="case.html" aria-expanded="false"><i class="icon icon-time"></i><span
+                                            class="nav-text">General Cases</span></a></li>
+                                <li id="gen_close"><a href="case_closed.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">Closed Cases</span></a></li>
+                            </ul>
+                        </li>
+
+
+                        <li id="gen_co" style="display: block"><a href="company.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Users & Roles</span></a></li>
+
+                        <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Company & Regions</span></a></li>
+                        <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Report Case</span></a></li>
+                        <li><a href="report/report.html" target="_blank" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Get External Report Link</span></a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <!--**********************************
+                Sidebar end
+            ***********************************-->
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+                <!-- row -->
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Medical Case View</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="mw_case_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                                -->
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                                -->
+
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Counter(Days)</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Case Status</th>
+                                                <th scope="col">Case Ticket ID</th>
+                                                <th scope="col">Mw Name</th>
+                                                <th scope="col">Mw Passport No.</th>
+                                                <th scope="col">Case Category</th>
+                                                <th scope="col">Mw Location</th>
+                                                <th scope="col">Sending Company</th>
+                                                <th scope="col">Receiving Company</th>
+                                                <th scope="col">Reporter</th>
+                                                <th scope="col">Reporter Contact</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mw_case_table_body">
+                                            <!--
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            -->
+                                        </tbody>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                                -->
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                                -->
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Counter(Days)</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Case Status</th>
+                                                <th scope="col">Case Ticket ID</th>
+                                                <th scope="col">Mw Name</th>
+                                                <th scope="col">Mw Passport No.</th>
+                                                <th scope="col">Case Category</th>
+                                                <th scope="col">Mw Location</th>
+                                                <th scope="col">Sending Company</th>
+                                                <th scope="col">Receiving Company</th>
+                                                <th scope="col">Reporter</th>
+                                                <th scope="col">Reporter Contact</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button class="btn btn-success m-2" onclick="exportTable('mw_case_table')">Export to Excel</button>
+                            <button class="btn btn-secondary m-2" onclick="printTable('mw_case_table')">Print</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+        <!-- Modal -->
+        <div class="modal" id="manage_case" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Case Manager</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-sm-12 col-xl-12">
+                            <div class="bg-light rounded h-100 p-4">
+                                <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab"
+                                           href="#nav-home" >Case Summary</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab"
+                                           href="#nav-profile" >Manage Case</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="nav-attach-tab" data-toggle="tab"
+                                           href="#nav-attach" >Attachments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="nav-act-tab" data-toggle="tab"
+                                           href="#nav-act" >Activity History</a>
+                                    </li>
+                                </ul><!-- comment -->
+
+
+                                <div class="tab-content pt-3" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        <div class="modal-body">
+                                            <label for="model_t_ticket" class="col-sm-6 col-form-label">Ticket Case ID</label>
+                                            <input type="text" name="cost" id="model_t_ticket" placeholder="Ticket Case ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_mwname" class="col-sm-6 col-form-label">Migrant Worker Name</label>
+                                            <input type="text" name="cost" id="model_t_mwname" placeholder="Migrant Worker Name" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_pass" class="col-sm-6 col-form-label">Migrant Passport</label>
+                                            <input type="text" name="cost" id="model_t_pass" placeholder="Migrant Passport" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_cat" class="col-sm-6 col-form-label">Case Category</label>
+                                            <input type="text" id="model_t_cat" placeholder="Case Category" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_det" class="col-sm-6 col-form-label">Case Details</label>
+                                            <textarea rows="5"   id="model_t_det" placeholder="Case Details" autocomplete="off" class="form-control placeholder-no-fix" readonly></textarea>
+                                            </br>
+                                            <label for="model_t_loca" class="col-sm-6 col-form-label">Location</label>
+                                            <input type="text"  id="model_t_loca" placeholder="Location" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_loca" class="col-sm-6 col-form-label">Assigned Officer ID</label>
+                                            <input type="text"  id="model_t_officer_id" placeholder="Assigned Officer ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_t_loca" class="col-sm-6 col-form-label">Assigned Officer</label>
+                                            <input type="text"  id="model_t_officer" placeholder="Assigned Officer" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <input type="text"  id="model_t_id" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_t_type" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                                        <div class="modal-body"> 
+                                            <label for="model_c_id" class="col-sm-6 col-form-label">Ticket Case ID</label>
+                                            <input type="text" name="cost" id="model_c_id" placeholder="Ticket Case ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_c_cc" class="col-sm-6 col-form-label">Case Category</label>
+                                            <input type="text" name="cost" id="model_c_cc" placeholder="Case Category" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_c_det" class="col-sm-6 col-form-label">Details</label>
+                                            <textarea rows="5"   id="model_c_det" placeholder="Case Details" autocomplete="off" class="form-control placeholder-no-fix" readonly></textarea>
+                                            </br>
+
+                                            <input type="text"  id="model_c_assignid" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_c_assignee" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_c_type" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+
+                                            <div>
+                                                <label>Case Status</label>                                                      
+                                                <select class="form-control" id="model_c_status" onchange="setOfficer()">
+                                                    <option id="1">Registered</option>
+                                                    <option id="2">Assign to Officer</option>
+                                                </select>
+                                            </div>
+                                            </br>
+                                            <div id="officer_div" >
+                                                <label>Officer</label>                                                      
+                                                <select class="form-control" id="model_c_officer">
+                                                </select>
+                                            </div>
+
+                                            <div class="model-body">
+                                                &nbsp;&nbsp;&nbsp; <button type="button" id="model_c_button" class="btn btn-primary">Update Case</button>
+                                            </div>
+
+                                            <br>
+
+                                            <div>
+                                                <label for="model_comment" class="col-sm-6 col-form-label">Comment on Case</label>
+                                                <textarea rows="5"   id="model_comment" placeholder="Comment on Case" autocomplete="off" class="form-control placeholder-no-fix"></textarea>
+                                                </br>
+                                                <div>
+                                                    <label>Comment Type</label>                                                      
+                                                    <select class="form-control" id="model_comment_type">
+                                                        <option id="0">General</option>
+                                                        <option id="1">Internal</option>
+                                                    </select>
+                                                </div>
+                                                </br>
+                                                &nbsp;&nbsp;&nbsp; <button type="button" id="model_comment_btn" class="btn btn-dark">Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-attach" role="tabpanel" aria-labelledby="nav-attach-tab">
+                                        <div class="modal-body"> 
+                                            <label for="model_att_id" class="col-sm-6 col-form-label">Ticket Case ID</label>
+                                            <input type="text" name="cost" id="model_att_id" placeholder="Ticket Case ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+                                            </br>
+                                            <label for="model_att_det" class="col-sm-6 col-form-label">Document Title</label>
+                                            <input type="text"  id="model_att_det" placeholder="Document Title" autocomplete="off" class="form-control placeholder-no-fix">
+                                            </br>
+                                            <label for="model_att_file" class="col-sm-6 col-form-label">Choose file</label>
+                                            <br>
+                                            <input type="file" class="file-upload-default" id="model_att_file" accept="image/x-png,image/jpg,image/jpeg">
+                                        </div>
+                                        <div class="model-body">
+                                            &nbsp;&nbsp;&nbsp; <button type="button" id="model_att_button" class="btn btn-primary">Update Attachment</button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered" id="model_att_table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Ref ID</th>
+                                                            <th>Name</th>
+                                                            <th>Attachment</th>
+                                                            <th>Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="model_attach_table_body">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="model-body">
+
+                                            <button class="btn btn-success m-2" onclick="exportTable('model_att_table')">Export to Excel</button>
+                                            <button class="btn btn-secondary m-2" onclick="printTable('model_att_table')">Print</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-act" role="tabpanel" aria-labelledby="nav-act-tab">
+                                        <div class="modal-body">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered" id="act_mw_table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Ref ID</th>
+                                                            <th>Name</th>
+                                                            <th>Details</th>
+                                                            <th>Action by</th>
+                                                            <th>Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="act_mw_table_body">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="model-body">
+
+                                            <button class="btn btn-success m-2" onclick="exportTable('act_mw_table')">Export to Excel</button>
+                                            <button class="btn btn-secondary m-2" onclick="printTable('act_mw_table')">Print</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Powered by <a href="#" target="_blank">MLGSD</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="./vendor/global/global.min.js"></script>
+        <script src="./js/quixnav-init.js"></script>
+        <script src="./js/custom.min.js"></script>
+
+
+        <!-- Vectormap -->
+        <script src="./vendor/raphael/raphael.min.js"></script>
+        <script src="./vendor/morris/morris.min.js"></script>
+
+
+        <script src="./vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+
+        <script src="./vendor/gaugeJS/dist/gauge.min.js"></script>
+
+        <!--  flot-chart js -->
+        <script src="./vendor/flot/jquery.flot.js"></script>
+        <script src="./vendor/flot/jquery.flot.resize.js"></script>
+
+        <!-- Owl Carousel -->
+        <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+        <!-- Counter Up -->
+        <script src="./vendor/jqvmap/js/jquery.vmap.min.js"></script>
+        <script src="./vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+        <script src="./vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+        <!-- Datatable -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./js/plugins-init/datatables.init.js"></script><!-- comment -->
+
+
+        <script src="./js/dashboard/dashboard-1.js"></script>
+
+
+        <script src="dash/constants.js"></script>
+        <script src="dash/gen.js"></script>
+        <script src="dash/med.js"></script>
+
+    </body>
+
+</html>

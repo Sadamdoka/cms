@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>MGLSD MONITORING PORTAL </title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        </div>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <a href="home.html" class="brand-logo">
+                    <img class="logo-abbr" src="./images/logo.png" alt="">
+
+                    &nbsp;
+                    <div class="ms-2">
+                        <span id="user_name"></span>
+                    </div>
+                    <!--
+                    <img class="logo-compact" src="./images/logo-text.png" alt="">
+                    <img class="brand-title" src="./images/logo-text.png" alt="">
+                    -->
+                </a>
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="search_bar dropdown">
+                                    <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                        <i class="mdi mdi-magnify"></i>
+                                    </span>
+                                    <div class="dropdown-menu p-0 m-0">
+                                        <form>
+                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <i class="mdi mdi-account"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">
+                                            <i class="icon-user"></i>
+                                            <span class="ml-2">Profile </span>
+                                        </a>
+                                        <a href="./index.html" class="dropdown-item">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+
+
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="nav-label first">MGLSD MONITORING PORTAL</li>
+                        <li><a href="home.html" aria-expanded="false"><i class="icon icon-home"></i><span
+                                    class="nav-text">Home</span></a></li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-btn-play-2" ></i><span class="nav-text">Migrant Workers</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="worker.html" aria-expanded="false"><i class="icon icon-world-2"></i><span
+                                            class="nav-text">Migrant Workers</span></a></li>
+                                <li><a href="status.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
+                                            class="nav-text">MW Status Follow</span></a></li> 
+                            </ul>
+                        </li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-alert-circle-exc" ></i><span class="nav-text">Case Manager</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="mycase.html" aria-expanded="false"><i class="icon icon-tag"></i><span
+                                            class="nav-text">My Cases</span></a></li>
+                                <li id="gen_case" ><a href="case.html" aria-expanded="false"><i class="icon icon-time"></i><span
+                                            class="nav-text">General Cases</span></a></li>
+                                <li id="gen_high"><a href="highalert.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                            class="nav-text">High Alert Cases</span></a></li>
+                                <li id="gen_close"><a href="case_closed.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">Closed Cases</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li id="gen_co" style="display: block"><a href="company.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Users & Roles</span></a></li>
+                        <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Company Manager</span></a></li>
+                        <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Internal Report Case</span></a></li>
+                        <li><a href="report/report.html" target="_blank" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Report Link</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--**********************************
+                Sidebar end
+            ***********************************-->
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+                <!-- row -->
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card" style="display: none">
+                            <div class="card-header">
+                                <h4 class="card-title">Search by Companies</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input type="text"  id="organ_id_src" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                    <label>Organizations/Companies</label>                                                      
+                                    <select class="form-control" id="org_select"  onchange="onChangeOrgan()">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Search by Migrant Workers</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input type="text"  id="mw_para" placeholder="Migrant Worker Passport | UserID | National ID" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <br>
+                                    <button type="button" id="mw_search_btn" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Migrant Workers</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="mw_app_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                               
+                                                -->
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Gen ID</th>
+                                                <th scope="col">User ID</th>
+                                                <th scope="col">National ID</th>
+                                                <th scope="col">Passport</th>
+                                                <th scope="col">Names</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Current Location</th>
+                                                <th scope="col">Kin Names</th>
+                                                <th scope="col">kin_phone</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mw_app_table_body">
+                                            <!--
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            -->
+                                        </tbody>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                                <!--
+                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                               
+                                                -->
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Gen ID</th>
+                                                <th scope="col">User ID</th>
+                                                <th scope="col">National ID</th>
+                                                <th scope="col">Passport</th>
+                                                <th scope="col">Names</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Current Location</th>
+                                                <th scope="col">Kin Names</th>
+                                                <th scope="col">kin_phone</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button class="btn btn-success m-2" onclick="exportTable('mw_app_table')">Export to Excel</button>
+                            <button class="btn btn-secondary m-2" onclick="printTable('mw_app_table')">Print</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!-- Modal -->
+        <div class="modal" id="manage_MW" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Manage Migrant Worker</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-sm-12 col-xl-12">
+                            <div class="card">
+                                <div class="bg-light rounded h-100 p-4">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3">
+                                            <img  id="model_mw_pic" src="images/avatar.jpg" alt="Profile"  width="200" height="200" class="rounded-circle">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_userid" class="col-sm-6 col-form-label">User ID</label>
+                                            <input type="text" name="cost" id="model_mw_userid" placeholder="User ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+
+                                            <label for="model_mw_pass" class="col-sm-6 col-form-label">Passport No.</label>
+                                            <input type="text" name="cost" id="model_mw_pass" placeholder="Passport No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <label for="model_mw_nin" class="col-sm-6 col-form-label">National ID.</label>
+                                            <input type="text" name="cost" id="model_mw_nin" placeholder="National ID No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_iqama" class="col-sm-6 col-form-label">Iqama No.</label>
+                                            <input type="text" id="model_mw_iqama" placeholder="Iqama No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <label for="model_mw_userid" class="col-sm-6 col-form-label">Names</label>
+                                            <input type="text"  id="model_mw_name" placeholder="Names" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <label for="model_mw_email" class="col-sm-6 col-form-label">Email</label>
+                                            <input type="text"  id="model_mw_email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_lphone" class="col-sm-6 col-form-label">Home Tel.</label>
+                                            <input type="text" id="model_mw_lphone" placeholder="Local Phone No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <label for="model_mw_fphone" class="col-sm-6 col-form-label">Foreign Tel.</label>
+                                            <input type="text"  id="model_mw_fphone" placeholder="Foreign Phone No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <label for="model_mw_marital" class="col-sm-6 col-form-label">Marital Status</label>
+                                            <input type="text" id="model_mw_marital" placeholder="Marital Status" autocomplete="off" class="form-control placeholder-no-fix">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_dob" class="col-sm-6 col-form-label">Date of Birth</label>
+                                            <input type="text"  id="model_mw_dob" placeholder="Date of Birth" autocomplete="off" class="form-control placeholder-no-fix">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">                            
+                                            <label for="model_mw_nationality" class="col-sm-6 col-form-label">Nationality</label>
+                                            <input type="text"  id="model_mw_nationality" placeholder="Nationality" autocomplete="off" class="form-control placeholder-no-fix">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_kin" class="col-sm-6 col-form-label">Next of Kin</label>
+                                            <input type="text" name="cost" id="model_mw_kin" placeholder="Next of Kin" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                        </div>
+
+                                        <div class="col-lg-3 col-sm-3">
+                                            <label for="model_mw_kin_no" class="col-sm-6 col-form-label">Kin Phone.</label>
+                                            <input type="text"  id="model_mw_kin_no" placeholder="Kin Phone No." autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <input type="text"  id="model_mw_organid" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_mw_id" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3">
+                                            <button type="button" id="model_mw_update" class="btn btn-primary">Update Migrant Information</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6">
+                                            <label for="con_lco_name" class="col-sm-6 col-form-label">Sending Company</label>
+                                            <input type="text" id="mw_lco_name" placeholder="Company" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_lco_id" class="col-sm-6 col-form-label">Company ID</label>
+                                            <input type="text" id="mw_lco_id" placeholder="Company" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_lco_tel" class="col-sm-6 col-form-label">Contact</label>
+                                            <input type="text" id="mw_lco_tel" placeholder="Contact" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_lco_email" class="col-sm-6 col-form-label">Email</label>
+                                            <input type="text" id="mw_lco_email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <label for="con_fco_name" class="col-sm-6 col-form-label">Receiving Company</label>
+                                            <input type="text" id="mw_fco_name" placeholder="Company" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_fco_id" class="col-sm-6 col-form-label">Company ID</label>
+                                            <input type="text" id="mw_fco_id" placeholder="Company" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_fco_tel" class="col-sm-6 col-form-label">Contact</label>
+                                            <input type="text" id="mw_fco_tel" placeholder="Contact" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                            <label for="con_fco_email" class="col-sm-6 col-form-label">Email</label>
+                                            <input type="text" id="mw_fco_email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix" readonly>
+                                        </div>
+                                    </div>
+
+                                    <br><!-- comment -->
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6">
+                                            <label for="mw_pic">Migrant Worker Picture</label>
+                                            <input type="file" class="form-control" id="mw_pic">
+                                            <br>
+                                            <button type="button"  class="btn btn-success" id="mw_btn_picture">Update Picture Only</button>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6">
+                                        </div>
+                                    </div>
+                                    <br>     
+                                    <br><!-- comment -->
+                                    <div id="co_edit_div">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <label><strong>Only Use If Editing Companies attached to Migrant Worker</strong></label>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                            </div>
+                                            <br>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <label>Choose Local/Sending Agency Or Company</label>                                                      
+                                                <select class="form-control" id="model_mw_lorgan" >
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <label>Choose  Foreign/Receiving Agency Or Company</label>                                                      
+                                                <select class="form-control" id="model_mw_organ" >
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <button type="button" id="model_mw_update_co" class="btn btn-info">Update Company Information</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="bg-light rounded h-100 p-4">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li class="nav-item active">
+                                        <a class="nav-link" id="nav-act-tab" data-toggle="tab"
+                                           href="#nav-act" >Activity History</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab"
+                                           href="#nav-chat">Custom Chats</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab"
+                                           href="#nav-profile" >Check Up</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content pt-3" id="nav-tabContent">
+                                    
+                                    <div class="tab-pane fade show active" id="nav-act" role="tabpanel" aria-labelledby="nav-act-tab">
+                                        <div class="modal-body">
+                                           
+                                               <div id="timelineContainer">
+                                                <ul class="timeline" id="timeline">
+                                                    <!-- Timeline events will be dynamically inserted here -->
+                                                </ul>
+                                            </div>
+                                            <div class="table-responsive" style="display:none">
+                                                <table class="table mb-0 table-bordered" id="act_mw_table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Ref ID</th>
+                                                            <th>Name</th>
+                                                            <th>Details</th>
+                                                            <th>Action by</th>
+                                                            <th>Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="act_mw_table_body">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="model-body">
+
+                                            <button class="btn btn-success m-2" onclick="exportTable('act_mw_table')">Export to Excel</button>
+                                            <button class="btn btn-secondary m-2" onclick="printTable('act_mw_table')">Print</button>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-chat" role="tabpanel" aria-labelledby="nav-chat-tab">
+                                        <div class="modal-body">
+                                            <label for="model_check_userid" class="col-sm-6 col-form-label" style="display: none">User ID</label>
+                                            <input type="text"  id="model_check_userid" placeholder="User ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="" style="display: none">
+                                            </br>
+                                            <input type="text" id="model_check_organid" placeholder="Organ ID" autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_check_organuser" placeholder="Organ UserID   " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_mw_forgan" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <label for="model_mw_txt_qtn" class="col-sm-6 col-form-label">Chat</label>
+                                            <input type="text"  id="model_mw_txt_qtn" placeholder="Chat Question" autocomplete="off" class="form-control placeholder-no-fix" >
+                                            </br>
+                                        </div>
+                                        <div class="model-body">
+                                            &nbsp;&nbsp;&nbsp; <button type="button" id="model_chat_button" class="btn btn-primary">Send</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <div class="modal-body">
+                                            <label for="model_check_userid" class="col-sm-6 col-form-label" style="display: none">User ID</label>
+                                            <input type="text"  id="model_follow_userid" placeholder="User ID" autocomplete="off" class="form-control placeholder-no-fix" disabled="" style="display: none">
+                                            </br>
+                                            <label for="model_mw_pass" class="col-sm-6 col-form-label" style="display: none">Passport No.</label>
+                                            <input type="text" name="cost" id="model_follow_pass" placeholder="Passport No." autocomplete="off" class="form-control placeholder-no-fix" disabled="" style="display: none">
+                                            </br>
+                                            <label for="model_mw_userid" class="col-sm-6 col-form-label" style="display: none">Names</label>
+                                            <input type="text"  id="model_follow_name" placeholder="Names" autocomplete="off" class="form-control placeholder-no-fix" disabled="">
+
+                                            <label for="model_mw_userid" class="col-sm-6 col-form-label">Last Date Checked On</label>
+                                            <input type="date"  id="model_follow_date" placeholder="Date" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                            <input type="text" id="model_follow_organid" placeholder="Organ ID" autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_follow_organuser" placeholder="Organ UserID   " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="model_follow_forgan" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+
+                                            </br>
+                                            <div>
+                                                <label>Period</label>                                                      
+                                                <select class="form-control" id="model_follow_period" >
+                                                    <option id="1">Arrival Check Up</option>
+                                                    <option id="2">Routinely Check Up</option>
+                                                    <option id="3">End of Contract</option>
+                                                    <option id="4">Non Applicable</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="model-body">
+                                            &nbsp;&nbsp;&nbsp; <button type="button" id="model_follow_button" class="btn btn-primary">Check Up</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Powered by <a href="#" target="_blank">MLGSD</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="./vendor/global/global.min.js"></script>
+        <script src="./js/quixnav-init.js"></script>
+        <script src="./js/custom.min.js"></script>
+
+
+        <!-- Vectormap -->
+        <script src="./vendor/raphael/raphael.min.js"></script>
+        <script src="./vendor/morris/morris.min.js"></script>
+
+
+        <script src="./vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+
+        <script src="./vendor/gaugeJS/dist/gauge.min.js"></script>
+
+        <!--  flot-chart js -->
+        <script src="./vendor/flot/jquery.flot.js"></script>
+        <script src="./vendor/flot/jquery.flot.resize.js"></script>
+
+        <!-- Owl Carousel -->
+        <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+        <!-- Counter Up -->
+        <script src="./vendor/jqvmap/js/jquery.vmap.min.js"></script>
+        <script src="./vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+        <script src="./vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+        <!-- Datatable -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./js/plugins-init/datatables.init.js"></script><!-- comment -->
+
+
+        <script src="./js/dashboard/dashboard-1.js"></script>
+
+
+        <script src="dash/constants.js"></script>
+        <script src="dash/gen.js"></script>
+        <script src="dash/mw_app.js"></script>
+
+    </body>
+
+</html>
