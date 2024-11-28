@@ -142,9 +142,10 @@ function setType(input) {
 
 function setAdmin_role(input) {
     if (input === '2') {
-        //document.getElementById('gen_case').style.display = 'none';
+        document.getElementById('gen_case').style.display = 'none';
+        document.getElementById('gen_close').style.display = 'none';
         document.getElementById('gen_co').style.display = 'none';
-        //document.getElementById('nav_man').style.display = 'none';
+        document.getElementById('nav_man').style.display = 'none';
     }
 }
 

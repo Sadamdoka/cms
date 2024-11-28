@@ -130,7 +130,7 @@ function loadCaseAll(input, organs) {
 function loadCases(input) {
     try {
         $.ajax({
-            url: url + "fetch/case_ticket_emb_closed/" + input + "/UG",
+            url: url + "fetch/case_ticket_high/" + input + "/UG",
             dataType: 'json',
             type: 'get',
             cache: false,
