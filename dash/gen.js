@@ -382,6 +382,8 @@ function addAttachment(ref, det, item) {
     });
 }
 
+
+
 function openImage(data) {
     //var name = $(data).attr("name");
     var value = $(data).attr("value");
@@ -442,86 +444,100 @@ function openFile(data) {
 
 
 function loadAttachment(input, tbl, tbbody) {
+    const name = $(input).attr("name");
+    const apiUrl = `${url}fetch/file/0/${name}`;
 
-    //console.log("Attachments");
-    var name = $(input).attr("name");
+    // Show a loading spinner in the table body
+    $("#" + tbbody).html(`
+        <tr>
+            <td colspan="8" align="center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </td>
+        </tr>
+    `);
 
-    try {
-        $.ajax({
-//
-            url: url + "fetch/file/0/" + name,
-            dataType: 'json',
-            type: 'get',
-            cache: false,
-            // timeout:3000, //3 second timeout 
-            processData: false,
-            contentType: false,
-            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
-                $("#" + tbbody).html('<tr><td colspan="8" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-            },
-            complete: function (data) {
-                //tbody.html("<i class = 'fa fa-spinner spin'></i> Please Wait.."+ JSON.stringify(data));
-            },
-            success: function (data) {
-                var e_data = '';
-                try {
-                    $("#" + tbbody).empty();
-                    let i = 1;
-                    let row = "";
-                    if (!isEmpty(data)) {
-                        //console.log(data);
-                        row += "";
-                        var value = data.files;
-                        if (!isJsonArray(value)) {
-                            //console.log(value.id);
+    // Make the AJAX request
+    $.ajax({
+        url: apiUrl,
+        type: 'GET',
+        dataType: 'json',
+        cache: false,
+        success: function (response) {
+            // Clear the table body
+            $("#" + tbbody).empty();
 
-                            e_data += '<tr>';
-                            e_data += '<td>' + value.ref + '</td>';
-                            e_data += '<td>' + value.details + '</td>';
-                            e_data += '<td>';
-                            e_data += '<button id="' + value.ref + '" onclick="openImage(this)" value = "' + value.item + '"  type = "button"  class = "btn btn-info" > View File </button>';
-                            e_data += '</td>';
-                            e_data += '<td>' + value.datereg + '</td>';
-                            e_data += '</tr>';
-                        } else {
-                            $.each(data.files, function (index, value) {
-                                //console.log(value);
-
-                                e_data += '<tr>';
-                                e_data += '<td>' + value.ref + '</td>';
-                                e_data += '<td>' + value.details + '</td>';
-                                e_data += '<td>';
-                                e_data += '<button id="' + value.ref + '" onclick="openImage(this)" value = "' + value.item + '"  type="button"  class="btn btn-info" >View File</button>';
-                                e_data += '</td>';
-                                e_data += '<td>' + value.datereg + '</td>';
-                                e_data += '</tr>';
-                                ++i;
-                            });
-                        }
-                    } else {
-                        row += '<tr><td colspan="8" align="center">No data</td></tr>';
-                    }
-                    $("#" + tbl).append(e_data);
-
-                    pager(tbl);
-                } catch (e) {
-                    ShowError("Response Error", e, loadAttachment);
-                }
-            },
-            error: function (d) {
-                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
-                if (ajaxOptions === 'timeout') {
-                    alert("ajax Error", "Connection Timeout");
-                } else {
-                    alert("ajax Error", "Sorry! Something wrong, please try again");
-                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-                //console.log(d);
+            // Process and populate the table
+            if (!response || !response.files) {
+                $("#" + tbbody).html('<tr><td colspan="8" align="center">No data</td></tr>');
+                return;
             }
-        });
-    } catch (ex) {
-        alert("Exception", ex);
+
+            let rows = '';
+            const files = Array.isArray(response.files) ? response.files : [response.files];
+
+            files.forEach((file) => {
+                const mediaContent = createMediaElement(file.item); // Directly call the function and return the element
+
+                rows += `
+                    <tr>
+                        <td>${file.ref || 'N/A'}</td>
+                        <td>${file.details || 'No details available'}</td>
+                        <td>${mediaContent}</td>
+                        <td>${file.datereg || 'N/A'}</td>
+                    </tr>
+                `;
+            });
+
+            $("#" + tbbody).append(rows);
+
+            // Apply pagination if necessary
+            pager(tbl);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error in loadAttachment:", error);
+
+            // Show error message to the user
+            $("#" + tbbody).html(`
+                <tr>
+                    <td colspan="8" align="center">
+                        <span class="text-danger">An error occurred while loading attachments. Please try again.</span>
+                    </td>
+                </tr>
+            `);
+        }
+    });
+}
+
+// Updated createMediaElement to return rendered media
+function createMediaElement(base64) {
+    const mimeType = detectMimeType(base64);
+    const dataUri = `data:${mimeType};base64,${base64}`;
+
+    if (mimeType.startsWith('image')) {
+        return `
+            <img src="${dataUri}" alt="Preview Image" style="width: 50px; cursor: pointer;" class="media-thumbnail" />
+        `;
+    } else if (mimeType.startsWith('audio')) {
+        return `
+            <audio controls>
+                <source src="${dataUri}" type="${mimeType}" />
+                Your browser does not support the audio element.
+            </audio>
+        `;
+    } else {
+        return 'Unsupported Media Type';
     }
+}
+
+// Utility to detect MIME type
+function detectMimeType(base64) {
+    if (base64.startsWith('/9j')) return 'image/jpeg';
+    if (base64.startsWith('iVBOR')) return 'image/png';
+    if (base64.startsWith('UklGR')) return 'audio/wav';
+    if (base64.startsWith('//uQ')) return 'audio/mpeg';
+    return 'application/octet-stream';
 }
 
 
