@@ -5,8 +5,8 @@
  */
 
 
-//var url = "https:esafeafrica.com/api.monitoring_mglsd/service/";
-var url = "https://avienseconsults.com/api.monitoring_mglsd/service/";
+var url = "https:esafeafrica.com/api.monitoring_mglsd/service/";
+//var url = "https://avienseconsults.com/api.monitoring_mglsd/service/";
 //var url = "http://localhost:8080/api.esafe/service/";
 var user = '';
 var role = '';
