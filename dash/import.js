@@ -2,9 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
-var url = "http://192.168.20.1:8080/api.cms/service/";
- 
+ */var url = "http://192.168.20.1:8080/api.cms/service/"
 //var url = "http://localhost:8080/api.cms/service/";
 $(document).ready(function () {
     /*
