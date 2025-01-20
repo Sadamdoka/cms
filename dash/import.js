@@ -5,7 +5,7 @@
  */
 var url = "http:/192.168.20.1:8080/api.cms/service/";
  
-//var url = "http://localhost:8080/api.esafe/service/";
+//var url = "http://localhost:8080/api.cms/service/";
 $(document).ready(function () {
     /*
      //getting email in url
