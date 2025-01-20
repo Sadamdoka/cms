@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var url = "http:/192.168.20.1:8080/api.cms/service/";
+var url = "http://192.168.20.1:8080/api.cms/service/";
  
 //var url = "http://localhost:8080/api.cms/service/";
 
@@ -45,6 +45,7 @@ function login() {
     let password = document.getElementById("floatingPassword").value;
     formData.append('email', userid);
     formData.append('password', password);
+    console.log(url + "conditions/user");
     $.ajax({
         url: url + "conditions/user",
         //dataType: 'json',
