@@ -85,7 +85,7 @@ function checkEmail() {
                         if (!isJsonArray(jdata)) {
                             //Add Singular values
                             var value = jdata;
-                            sendReset(value.name,input,value.resid);
+                            sendReset(input,value.name,value.resid);
                             //output.style.color = "green";
                             //output.innerHTML = "Email Exists";
                             //e_data += '<div class="desc"><div class="thumb"><span class="badge bg-theme"><i class="fa fa-clock-o"></i></span></div><div class="details"><p><muted>' + value.datreg + '</muted><br/><a href="#">' + value.activity + '</a>&nbsp&nbsp' + value.act_by + '<br/></p></div></div>';
