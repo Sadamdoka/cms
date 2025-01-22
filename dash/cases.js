@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */var url = "http://192.168.20.1:8080/api.cms/service/"
+ */var url = "http://192.168.20.1:8080/api.cms/service/";
 //var url = "http://localhost:8080/api.cms/service/";
 var user = '';
 var role = '';
@@ -453,13 +453,18 @@ function getCaseDet(input) {
                             document.getElementById('model_c_det').value = jdata.mw_assistance;
                             document.getElementById('model_att_id').value = jdata.case_id;
 
-                            if (jdata.mw_passport_no === "NA" || jdata.mw_passport_no === "Unknown") {
-                                document.getElementById('model_t_mwname').value = jdata.mw_name;
-                                document.getElementById('model_t_pass').value = jdata.mw_passport_no;
-                            } else {
-                                getMW_Details_Case(jdata.mw_sys_id, 'model_t_mwname', 'model_t_pass', '0', 'model_t_lco', 'model_t_lco_con', 'model_t_lco_email', 'model_t_fco', 'model_t_fco_con', 'model_t_fco_email', 'model_mw_pic');
+                            //console.log(jdata.mw_passport_no);
 
-                            }
+                            document.getElementById('model_t_mwname').value = jdata.mw_name;
+                            document.getElementById('model_t_pass').value = jdata.mw_passport_no;
+                            /**
+                             if (jdata.mw_passport_no === "NA" || jdata.mw_passport_no === "Unknown") {
+                             document.getElementById('model_t_mwname').value = jdata.mw_name;
+                             document.getElementById('model_t_pass').value = jdata.mw_passport_no;
+                             } else {
+                             getMW_Details_Case(jdata.mw_sys_id, 'model_t_mwname', 'model_t_pass', '0', 'model_t_lco', 'model_t_lco_con', 'model_t_lco_email', 'model_t_fco', 'model_t_fco_con', 'model_t_fco_email', 'model_mw_pic');
+                             
+                             }*/
 
                             //e_data += '<div class="desc"><div class="thumb"><span class="badge bg-theme"><i class="fa fa-clock-o"></i></span></div><div class="details"><p><muted>' + value.datreg + '</muted><br/><a href="#">' + value.activity + '</a>&nbsp&nbsp' + value.act_by + '<br/></p></div></div>';
                         } else {

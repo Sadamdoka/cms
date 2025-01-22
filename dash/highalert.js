@@ -66,7 +66,7 @@ function getAccount(input) {
                             //Add Singular values
                             var value = jdata;
                             user = value.resid;
-                            
+
                             document.getElementById('user_name').innerHTML = value.name;
                             act_name = value.name;
                             type = value.type;
@@ -89,17 +89,11 @@ function getAccount(input) {
                     }
                     //appending data
                 } catch (e) {
-                    ShowError("Response Error", e, getAccount);
+                    console.log(e);
                 }
             },
             error: function (d) {
-                //$("#id").html()
-                ShowError("Response Error");
-                if (ajaxOptions === 'timeout') {
-                    ShowError("Ajax Error", "Connection TimeOut");
-                } else {
-                    ShowError("Ajax Error", "Something went wrong!");
-                }
+               console.log(d);
             }});
     } catch (ex) {
         ShowError("Exception", ex);
@@ -115,10 +109,10 @@ function loadCaseAll(input, organs) {
         loadCasesForeign(organs);
         //loadEmergenciesAgency(organs);
     } else if (input === "3") {
-        loadCases(1);
+        loadCases("UG");
         //loadEmergencies();
     } else if (input === "4") {
-        loadCases(1);
+        loadCases("UG");
         //loadEmergencies();
     } else {
         alert("Error Code");
@@ -130,7 +124,7 @@ function loadCaseAll(input, organs) {
 function loadCases(input) {
     try {
         $.ajax({
-            url: url + "fetch/case_ticket_high/" + input + "/UG",
+            url: url + "fetch/case_ticket_high/" + input,
             dataType: 'json',
             type: 'get',
             cache: false,
