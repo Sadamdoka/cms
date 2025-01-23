@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-var url = "http://192.168.20.1:8080/api.cms/service/"
-//var url = "http://localhost:8080/api.cms/service/";
+//var url = "http://192.168.20.1:8080/api.cms/service/"
+var url = "https://esafeafrica.com/api.cms/service/";
 
 var user = '';
 var role = '';
