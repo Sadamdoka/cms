@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Complaints External Employment Management Information System(CEEMIS) </title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        </div>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <a href="home.html" class="brand-logo">
+                    <img class="logo-abbr" src="./images/logo.png" alt="" id="pic_logo">
+
+                    &nbsp;
+                    <div class="ms-2">
+                        <span id="user_name"></span>
+                    </div>
+                    <!--
+                    <img class="logo-compact" src="./images/logo-text.png" alt="">
+                    <img class="brand-title" src="./images/logo-text.png" alt="">
+                    -->
+                </a>
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="search_bar dropdown">
+                                    <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                        <i class="mdi mdi-magnify"></i>
+                                    </span>
+                                    <div class="dropdown-menu p-0 m-0">
+                                        <form>
+                                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <i class="mdi mdi-account"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">
+                                            <i class="icon-user"></i>
+                                            <span class="ml-2">Profile </span>
+                                        </a>
+                                        <a href="./index.html" class="dropdown-item">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="nav-label first">Complaints External Employment Management Information System(CEEMIS)</li>
+                        <li><a href="home.html" aria-expanded="false"><i class="icon icon-home"></i><span
+                                    class="nav-text">Home</span></a></li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-btn-play-2" ></i><span class="nav-text">Migrant Workers</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="worker.html" aria-expanded="false"><i class="icon icon-world-2"></i><span
+                                            class="nav-text">Migrant Workers</span></a></li>
+                                <li><a href="status.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
+                                            class="nav-text">Status Update</span></a></li> 
+                            </ul>
+                        </li>
+
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                    class="icon icon-alert-circle-exc" ></i><span class="nav-text">Case Manager</span></a>
+                            <ul aria-expanded="false">
+                                <li><a href="mycase.html" aria-expanded="false"><i class="icon icon-tag"></i><span
+                                            class="nav-text">My Cases</span></a></li>
+                                <li id="gen_case" ><a href="case.html" aria-expanded="false"><i class="icon icon-time"></i><span
+                                            class="nav-text">General Cases</span></a></li>
+                                <li id="gen_high"><a href="highalert.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                            class="nav-text">High Alert Cases</span></a></li>
+                                <li id="gen_close"><a href="case_closed.html" aria-expanded="false"><i class="icon icon-basket"></i><span
+                                            class="nav-text">Closed Cases</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li id="gen_co" style="display: block"><a href="company.html" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                    class="nav-text">Users & Roles</span></a></li>
+                        <li id="nav_u" style="display: block"><a href="users.html" aria-expanded="false"><i class="icon icon-single-copies"></i><span
+                                    class="nav-text">CSO Manager</span></a></li>
+                        <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Configuration</span></a></li>
+                        <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Internal Report Case</span></a></li>
+                        <li><a href="report/report.html" target="_blank" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
+                                    class="nav-text">Report Link</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--**********************************
+                Sidebar end
+            ***********************************-->
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+                <!-- row -->
+
+                <div class="row">
+                    <div class="col-12" >  
+                        <div class="card">
+                            <button type="button" id="org_add_access" class="btn btn-secondary m-2">Organisation/CSO Manager</button>
+                        </div>
+                        <div class="card" style="display: none" id="co_div">
+                            <div class="card-header">
+                                <h4 class="card-title">Organisation/CSO Management</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="card">
+                                        <div class="bg-light rounded h-100 p-4">
+                                            <h6 class="mb-4">Information</h6>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_id">Organ ID</label>
+                                                <input type="text" class="form-control" id="org_id"
+                                                       placeholder="Organ ID" disabled="">
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_lic">Reg No.</label>
+                                                <input type="text" class="form-control" id="org_lic"
+                                                       placeholder="Reg No.">
+                                            </div>    
+                                            <div class="form-floating mb-3" style="display: none"> 
+                                                <label for="org_ltype">License Type</label>
+                                                <input type="text" class="form-control" id="org_ltype"
+                                                       placeholder="License Type">
+                                            </div>
+
+                                            <div class="form-floating mb-3" style="display: none">
+                                                <label for="org_lexp">License Expiry</label>
+                                                <input type="text" class="form-control" id="org_lexp"
+                                                       placeholder="Licence Expiry Date">
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_name">Name</label>
+                                                <input type="text" class="form-control" id="org_name"
+                                                       placeholder="Name">
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_tel">Tel:</label>
+                                                <input type="text" class="form-control" id="org_tel"
+                                                       placeholder="Tel:" >
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="card">
+                                        <div class="bg-light rounded h-100 p-4">
+                                            
+                                            <div class="form-floating mb-3">
+                                                <label for="org_email">Email</label>
+                                                <input type="text" class="form-control" id="org_email"
+                                                       placeholder="Email" >
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_address">Address</label>
+                                                <input type="text" class="form-control" id="org_address"
+                                                       placeholder="Address" >
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="org_country">Country</label>
+                                                <input type="text" class="form-control" id="org_country"
+                                                       placeholder="Country" >
+                                            </div>
+                                            <div class="form-floating mb-3" style="display: none">
+                                                <label for="org_logo">Logo</label>
+                                                <input type="file" class="form-control" id="org_logo"
+                                                       placeholder="Logo" >
+                                            </div>
+
+                                            <div class="form-floating mb-3">
+                                                <label>Choose Organ Type</label>                                                      
+                                                <select class="form-control" id="org_type">
+                                                    <option id="1">Local/Sending Agency</option>
+                                                    <option id="2">Foreign/Receiving Agency</option>
+                                                    <option id="3">Government Agency(CSO)</option>
+                                                </select>
+                                            </div>
+
+                                            <input type="text"  id="org_gen_id" autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+                                            <input type="text"  id="org_logo_txt" autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
+
+                                            <button type="button" id="org_add" class="btn btn-rounded btn-success">  Add  </button>
+                                            <button type="button" id="org_edit" class="btn btn-rounded btn-secondary"> Edit </button>
+                                            <button type="button" id="org_del" class="btn btn-rounded btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /# column -->
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Organisations/CSO</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="co_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">OrganID</th>
+                                                <th scope="col">Reg No.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="co_body">
+                                            <!--
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            -->
+                                        </tbody>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">OrganID</th>
+                                                <th scope="col">Reg No.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button class="btn btn-success m-2" onclick="exportTable('co_table')">Export to Excel</button>
+                            <button class="btn btn-secondary m-2" onclick="printTable('co_table')">Print</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="display: none">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Saudi Arabian Companies</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="fco_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Organ/Company System ID</th>
+                                                <th scope="col">License No.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="fco_body">
+                                            <!--
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            -->
+                                        </tbody>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Manage</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Organ/Company System ID</th>
+                                                <th scope="col">License No.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button class="btn btn-success m-2" onclick="exportTable('fco_table')">Export to Excel</button>
+                            <button class="btn btn-secondary m-2" onclick="printTable('fco_table')">Print</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Powered by <a href="#" target="_blank">MINISTRY OF GENDER LABOUR & SOCIAL DEVELOPMENT</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="./vendor/global/global.min.js"></script>
+        <script src="./js/quixnav-init.js"></script>
+        <script src="./js/custom.min.js"></script>
+
+
+        <!-- Vectormap -->
+        <script src="./vendor/raphael/raphael.min.js"></script>
+        <script src="./vendor/morris/morris.min.js"></script>
+
+
+        <script src="./vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+
+        <script src="./vendor/gaugeJS/dist/gauge.min.js"></script>
+
+        <!--  flot-chart js -->
+        <script src="./vendor/flot/jquery.flot.js"></script>
+        <script src="./vendor/flot/jquery.flot.resize.js"></script>
+
+        <!-- Owl Carousel -->
+        <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+        <!-- Counter Up -->
+        <script src="./vendor/jqvmap/js/jquery.vmap.min.js"></script>
+        <script src="./vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+        <script src="./vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+        <!-- Datatable -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./js/plugins-init/datatables.init.js"></script><!-- comment -->
+
+        <script src="./js/dashboard/dashboard-1.js"></script>
+
+        <script src="dash/constants.js"></script> 
+        <script src="dash/gen.js"></script>
+        <script src="dash/users.js"></script>
+
+    </body>
+
+</html>

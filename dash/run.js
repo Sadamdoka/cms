@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//var url = "http://192.168.20.1:8080/api.cms/service/"
-var url = "https://esafeafrica.com/api.cms/service/";
+//var url = "http://192.168.20.1:8080/api.ceemis/service/"
+var url = "https://esafeafrica.com/api.ceemis/service/";
 var user = '';
 var role = '';
 var type = '';

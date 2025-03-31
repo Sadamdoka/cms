@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-//var url = "http://192.168.20.1:8080/api.cms/service/"
-var url = "https://esafeafrica.com/api.cms/service/";
+//var url = "http://192.168.20.1:8080/api.ceemis/service/"
+var url = "https://esafeafrica.com/api.ceemis/service/";
 var user = '';
 var role = '';
 $(document).ready(function () {
@@ -142,6 +142,7 @@ function setType(input) {
 function setAdmin_role(input) {
     if (input === '2') {
         document.getElementById('gen_case').style.display = 'none';
+        document.getElementById('nav_u').style.display = 'none';
         document.getElementById('gen_close').style.display = 'none';
         document.getElementById('gen_co').style.display = 'none';
         document.getElementById('nav_man').style.display = 'none';
