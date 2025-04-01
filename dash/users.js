@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-//var url = "http://154.72.194.17:8080/api.ceemis/service/"
-var url = "https://esafeafrica.com/api.ceemis/service/";
+var url = "http://154.72.194.17:8080/api.ceemis/service/"
+//var url = "https://esafeafrica.com/api.ceemis/service/";
 
 
 var user = '';
@@ -83,6 +82,7 @@ function getAccount(input) {
                             setAdmin_role(value.role);
 
                             loadCompanies_Home();
+                            loadUsers();
                             //e_data += '<div class="desc"><div class="thumb"><span class="badge bg-theme"><i class="fa fa-clock-o"></i></span></div><div class="details"><p><muted>' + value.datreg + '</muted><br/><a href="#">' + value.activity + '</a>&nbsp&nbsp' + value.act_by + '<br/></p></div></div>';
                         } else {
                             //Add ArrayList
@@ -121,10 +121,19 @@ function getAccount(input) {
 
 
 
+
+
+document.getElementById('acc_btn_facility').addEventListener('click', addModel);
+function addModel() {
+    $('#add_model_facility').modal('show');
+}
+
 function setCompany() {
     let input = $("#model_user_type :selected").attr('id');
     loadCompanies(input);
+
 }
+
 document.getElementById('org_add_access').addEventListener('click', actCo);
 function actCo() {
     document.getElementById('co_div').style.display = 'block';
@@ -478,3 +487,201 @@ function loadCo(input) {
 
 
 
+function loadUsers() {
+    try {
+        $.ajax({
+//
+            url: url + "fetch/user",
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            // timeout:3000, //3 second timeout 
+            processData: false,
+            contentType: false,
+            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
+                $("#acc_body").html('<tr><td colspan="8" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+            },
+            complete: function (data) {
+                //tbody.html("<i class = 'fa fa-spinner spin'></i> Please Wait.."+ JSON.stringify(data));
+            },
+            success: function (data) {
+                var e_data = '';
+                try {
+                    $("#acc_body").empty();
+                    let i = 1;
+                    let row = "";
+                    if (!isEmpty(data)) {
+                        row += "";
+                        var value = data.user;
+                        if (!isJsonArray(value)) {
+                            //console.log(value.id);
+                            e_data += '<tr>';
+                            e_data += '<td>' + value.datereg + '</td>';
+                            e_data += '<td>' + value.id + '</td>';
+                            e_data += '<td>' + value.resid + '</td>';
+                            e_data += '<td>' + value.name + '</td>';
+                            e_data += '<td>' + value.phone + '</td>';
+                            e_data += '<td>' + value.email + '</td>';
+                            e_data += '<td>' + getRole(value.role) + '</td>';
+                            e_data += '<td>' + getType(value.type) + '</td>';
+                            e_data += '<td>' + getStatus(value.status) + '</td>';
+                            e_data += '</tr>';
+                        } else {
+                            $.each(data.user, function (index, value) {
+                                //console.log(value.id);
+                                e_data += '<tr>';
+                                e_data += '<td>' + value.datereg + '</td>';
+                                e_data += '<td>' + value.id + '</td>';
+                                e_data += '<td>' + value.resid + '</td>';
+                                e_data += '<td>' + value.name + '</td>';
+                                e_data += '<td>' + value.phone + '</td>';
+                                e_data += '<td>' + value.email + '</td>';
+                                e_data += '<td>' + getRole(value.role) + '</td>';
+                                e_data += '<td>' + getType(value.type) + '</td>';
+                                e_data += '<td>' + getStatus(value.status) + '</td>';
+                                e_data += '</tr>';
+                                ++i;
+                            });
+                        }
+                    } else {
+                        row += '<tr><td colspan="8" align="center">No data</td></tr>';
+                    }
+                    $("#acc_table").append(e_data);
+                    pager('acc_table');
+                } catch (e) {
+                    ShowError("Response Error", e, loadUsers);
+                }
+            },
+            error: function (d) {
+                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
+                if (ajaxOptions === 'timeout') {
+                    alert("ajax Error", "Connection Timeout");
+                } else {
+                    alert("ajax Error", "Sorry! Something wrong, please try again");
+                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+                //console.log(d);
+            }
+        });
+    } catch (ex) {
+        alert("Exception", ex);
+    }
+}
+
+
+function getStatus(input) {
+    if (input === "0") {
+        return "Inactive";
+    } else if (input === "1") {
+        return "Active";
+    } else {
+        return "Error";
+    }
+}
+
+function getType(input) {
+    if (input === "0") {
+        return "Inactive";
+    } else if (input === "1") {
+        return "Local User";
+    } else if (input === "2") {
+        return "Foreign User";
+    } else if (input === "3") {
+        return "Government User";
+    } else if (input === "4") {
+        return "Esafe User";
+    } else {
+        return "Error";
+    }
+}
+
+function getRole(input) {
+    if (input === "0") {
+        return "No Rights";
+    } else if (input === "1") {
+        return "Admin Rights";
+    } else if (input === "2") {
+        return "Normal Rights";
+    } else if (input === "3") {
+        return "Acounts Rights";
+    } else {
+        return "Error";
+    }
+}
+
+
+
+function loadCompanies(input) {
+    try {
+        $.ajax({
+//
+            url: url + "fetch/organs/" + input,
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            // timeout:3000, //3 second timeout 
+            processData: false,
+            contentType: false,
+            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
+                // $("#prop_body").html('<tr><td colspan="5" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+
+            },
+            complete: function (data) {
+                //tbody.html("<i class = 'fa fa-spinner spin'></i> Please Wait.."+ JSON.stringify(data));
+            },
+            success: function (data) {
+                var e_data = '';
+                try {
+                    $("#model_user_co").empty();
+                    let i = 1;
+                    let row = "";
+                    if (!isEmpty(data)) {
+                        row += "";
+                        var jdata = data.organ;
+                        if (!isJsonArray(jdata)) {
+                            //console.log(jdata.id);
+                            e_data += '<option id="' + jdata.organid + '" ">';
+                            e_data += jdata.names;
+                            e_data += '</option>';
+                        } else {
+                            $.each(data.organ, function (index, value) {
+                                //console.log(value.id);
+                                e_data += '<option id="' + value.organid + '"">';
+                                e_data += value.names;
+                                e_data += '</option>';
+                                ++i;
+                            });
+                        }
+                    } else {
+                        row += '<tr><td colspan="5" align="center">No data</td></tr>';
+                    }
+                    $("#model_user_co").append(e_data);
+                } catch (e) {
+                    ShowError("Response Error", e, loadCompanies);
+                }
+            },
+            error: function (d) {
+                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
+                if (ajaxOptions === 'timeout') {
+                    alert("ajax Error", "Connection Timeout");
+                } else {
+                    alert("ajax Error", "Sorry! Something wrong, please try again");
+                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+                //console.log(d);
+            }
+        });
+    } catch (ex) {
+        alert("Exception", ex);
+    }
+}
+
+function generatePassword() {
+    const length = 12;
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    document.getElementById("model_user_pass").value = password;
+}
