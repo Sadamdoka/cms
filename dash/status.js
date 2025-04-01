@@ -1343,11 +1343,13 @@ function ageColor(input) {
 
 function setOfficerby() {
     let s = $("#model_c_status :selected").attr('id');
+    console.log(s);
     if (s === "2") {
         document.getElementById('officer_div').style.display = 'block';
-        //document.getElementById('officer_div').style.visibility = "visible";
-        //document.getElementById('officer_div').style.display = 'show';
         loadOrganOfficers(organ);
+    } else if (s === "6") {
+        document.getElementById('officer_div').style.display = 'block';
+        loadOfficers();
     } else {
         document.getElementById('officer_div').style.display = 'none';
         //document.getElementById('officer_div').style.visibility = "hidden";
@@ -1408,6 +1410,75 @@ function loadOrganOfficers(input) {
             },
             error: function (d) {
                 console.log(d);
+                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
+                if (ajaxOptions === 'timeout') {
+                    alert("ajax Error", "Connection Timeout");
+                } else {
+                    alert("ajax Error", "Sorry! Something wrong, please try again");
+                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+                //console.log(d);
+            }
+        });
+    } catch (ex) {
+        alert("Exception", ex);
+    }
+}
+
+
+
+
+
+function loadOfficers() {
+    try {
+        $.ajax({
+            //
+            url: url + "fetch/user",
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            // timeout:3000, //3 second timeout 
+            processData: false,
+            contentType: false,
+            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
+                // $("#prop_body").html('<tr><td colspan="5" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+
+            },
+            complete: function (data) {
+                //tbody.html("<i class = 'fa fa-spinner spin'></i> Please Wait.."+ JSON.stringify(data));
+            },
+            success: function (data) {
+                var e_data = '';
+                try {
+                    $("#model_c_officer").empty();
+                    let i = 1;
+                    let row = "";
+                    if (!isEmpty(data)) {
+                        row += "";
+                        var jdata = data.user;
+                        if (!isJsonArray(jdata)) {
+                            //console.log(jdata.id);
+                            e_data += '<option id="' + jdata.resid + '" ">';
+                            e_data += jdata.name;
+                            e_data += '</option>';
+                        } else {
+                            $.each(data.user, function (index, value) {
+                                //console.log(value.id);
+                                e_data += '<option id="' + value.resid + '"">';
+                                e_data += value.name;
+                                e_data += '</option>';
+                                ++i;
+                            });
+                        }
+                    } else {
+                        row += '<tr><td colspan="5" align="center">No data</td></tr>';
+                    }
+                    $("#model_c_officer").append(e_data);
+                } catch (e) {
+                    ShowError("Response Error", e, loadOrganOfficers);
+                }
+            },
+            error: function (d) {
                 //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
                 if (ajaxOptions === 'timeout') {
                     alert("ajax Error", "Connection Timeout");
@@ -2268,3 +2339,6 @@ function subcaseChat(event) {
         console.log('ERROR: ' + err);
     });
 }
+
+
+
