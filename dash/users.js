@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var url = "http://154.72.194.17:8080/api.ceemis/service/"
+var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
 //var url = "https://esafeafrica.com/api.ceemis/service/";
 
 
@@ -282,7 +282,7 @@ function loadCompanies_Home() {
 
 function getCoType(input) {
     if (input === "1") {
-        return "UGANDAN COMPANY";
+        return "Ugandan COMPANY";
     } else if (input === "2") {
         return "SAUDI COMPANY";
     } else if (input === "3") {

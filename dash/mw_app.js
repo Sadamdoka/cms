@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var url = "http://154.72.194.17:8080/api.ceemis/service/"
+var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
 //var url = "https://esafeafrica.com/api.ceemis/service/";
 var user = '';
 var role = '';
@@ -693,7 +693,7 @@ function getWorker(input) {
                             //Add Singular values
                             var value = jdata;
                             //console.log(value);
-                            genCard(value.userid, value.nin, value.passport, value.names, gender(value.gender), value.marital, value.phone, value.email, value.dob, "UGANDAN", document.getElementById("co_name").value, value.kin_name, value.kin_phone, value.code);
+                            genCard(value.userid, value.nin, value.passport, value.names, gender(value.gender), value.marital, value.phone, value.email, value.dob, "Ugandan", document.getElementById("co_name").value, value.kin_name, value.kin_phone, value.code);
                             //e_data += '<div class="desc"><div class="thumb"><span class="badge bg-theme"><i class="fa fa-clock-o"></i></span></div><div class="details"><p><muted>' + value.datreg + '</muted><br/><a href="#">' + value.activity + '</a>&nbsp&nbsp' + value.act_by + '<br/></p></div></div>';
                         } else {
                             //Add ArrayList
