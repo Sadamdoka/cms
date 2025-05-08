@@ -152,6 +152,8 @@
                                     class="nav-text">Users & Roles</span></a></li>
                         <li id="nav_u" style="display: block"><a href="users.html" aria-expanded="false"><i class="icon icon-single-copies"></i><span
                                     class="nav-text">CSO Manager</span></a></li>
+                        <li id="nav_cat" style="display: block"><a href="category.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Category Manager</span></a></li>
                         <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
                                     class="nav-text">Configuration</span></a></li>
                         <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
@@ -182,7 +184,7 @@
                                                 <label>Who's Reporting :</label>
                                                 <select class="form-control" aria-label="Default select example" id="who" onchange="chooseWho()">
                                                     <option selected>Open this to Select Individual Or Organization</option>
-                                                    <option id="1">Ugandan Migrant Worker myself</option>
+                                                    <option id="1">Ugandan   myself</option>
                                                     <option id="4">Ugandan Government Agency(Embassy,MGLSD,MOFA)</option>
                                                     <option id="2">Others(UEARA, Agents, Recruitment Companies etc..)</option>
                                                 </select>
@@ -233,13 +235,13 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-4 unit whole">
                                                     <select class="form-control" aria-label="Default select example" id="status_pass" onchange="setPassport()">
-                                                        <option selected>Do you know Migrant Worker Passport Number</option>
+                                                        <option selected>Do you know the Passport Number</option>
                                                         <option id="1">NO</option>
                                                         <option id="2">YES</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4 unit half">
-                                                    <input type="text" class="form-control" id="mw_passport" placeholder="Migrant Worker Passport Number" required  disabled  style="display: none">
+                                                    <input type="text" class="form-control" id="mw_passport" placeholder=" Passport Number" required  disabled  style="display: none">
                                                     <input type="text" class="form-control" id="mw_userid" style="display: none">
                                                     <input type="text" class="form-control" id="mw_lorg" style="display: none">
                                                     <input type="text" class="form-control" id="mw_org" style="display: none">
@@ -250,18 +252,18 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-4 unit half">
-                                                    <input type="text" class="form-control" id="mw_name_f" placeholder="Migrant Worker First Name" required>
+                                                    <input type="text" class="form-control" id="mw_name_f" placeholder=" First Name" required>
                                                 </div>
                                                 <div class="form-group col-md-4 unit half">
-                                                    <input type="text" class="form-control" id="mw_name_m" placeholder="Migrant Worker Middle Name" required>
+                                                    <input type="text" class="form-control" id="mw_name_m" placeholder=" Middle Name" required>
                                                 </div>
                                                 <div class="form-group col-md-4 unit half">
-                                                    <input type="text" class="form-control" id="mw_name_s" placeholder="Migrant Worker Surname" required>
+                                                    <input type="text" class="form-control" id="mw_name_s" placeholder=" Surname" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-4 unit half">
-                                                    <input type="text" class="form-control" id="mw_whatsapp_no" placeholder="Migrant Worker Mobile Phone & WhatsApp Contact" required>
+                                                    <input type="text" class="form-control" id="mw_whatsapp_no" placeholder=" Mobile Phone & WhatsApp Contact" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4 unit half">
@@ -280,7 +282,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-4 unit half">
                                                     <select class="form-control"  id="mw_job" required>
-                                                        <option  disabled selected hidden>Choose Migrant Worker Job</option>
+                                                        <option  disabled selected hidden>Choose  Job</option>
                                                         <option data-tokens="Housemaid">Housemaid</option>
                                                         <option data-tokens="Female Cleaner">Female Cleaner</option>
                                                         <option data-tokens="Driver">Driver</option>
@@ -320,7 +322,7 @@
 
 
 
-                                            <div class="form-row">
+                                            <div class="form-row" style="display: none">
                                                 <div class="form-group col-md-6 unit whole">
                                                     <input type="text" class="form-control" id="mw_emp_name" placeholder="Name of the Employer"  required>
                                                 </div>
@@ -333,7 +335,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 unit half">
                                                     <select class="form-control" aria-label="Default select example" id="mw_current_loca"  required>
-                                                        <option  disabled selected hidden >Choose Migrant Worker Current Location</option>
+                                                        <option  disabled selected hidden >Choose  Current Location</option>
                                                         <option>At Employer/Client</option>
                                                         <option>At Embassy</option>
                                                         <option>At Consulate</option>
@@ -359,7 +361,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6 unit half">
                                                     <select class="form-control" aria-label="Default select example" id="mw_passport_status"  required>
-                                                        <option  disabled selected hidden >Do you have your passport?(Migrant Worker)</option>
+                                                        <option  disabled selected hidden >Do you have your passport?()</option>
                                                         <option>Yes, I have my passport</option>
                                                         <option>No, with my Employer/Client,  with my permission to keep it safe</option>
                                                         <option>No, with my Employer/Client without my permission</option>
@@ -388,7 +390,7 @@
                                         <div id="mw" >
                                             <div class="form-row">
                                                 <div class="form-group col-md-12 unit whole">
-                                                    <label>How do you categorize the Main Complaint?</label>
+                                                    <label>Case Category?</label>
                                                     <select class="form-control" aria-label="Default select example" id="mw_comp_category"  required>
                                                         <option disabled selected hidden>Please Choose Case Category</option>
                                                         <option>COMPLIMENT/APPRECIATION</option>
@@ -439,7 +441,7 @@
                                                     <input type="file" class="form-control" id="mw_other_doc" />
                                                 </div>
                                                 <div class="form-group col-md-4 unit one-quarter" style="display: none">
-                                                    <label >Attach or upload Passport Size Photograph of the Migrant Worker</label>
+                                                    <label >Attach or upload Passport Size Photograph of the </label>
                                                     <input type="file" class="form-control" id="mw_pic" />
                                                 </div>
 
@@ -455,16 +457,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12 unit whole">
-                                                    <input type="checkbox" class="form-check-input" id="info_check" value="">
-                                                    <p>Declaration: I hereby state that the information I am providing is true, and I am aware that my information will be verified with my Employer, Ugandan recruitment agency, Foreign recruitment agency, and all other related sources if necessary.  I am also aware that this information can be used in the courts of law.</p>
-                                                </div>
-                                            </div>
+                                        
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12 unit whole">
-                                                    <button type="submit" id="report_btn" class="btn btn-primary btn-block">Submit</button>
+                                                    <button type="submit" id="report_btn" class="btn btn-success btn-block">Submit</button>
                                                 </div>
                                             </div>
                                         </div>

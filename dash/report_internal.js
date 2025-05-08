@@ -25,7 +25,8 @@ $(document).ready(function () {
     //document.getElementById('option_embassy').style.display = 'block';
     document.getElementById('sor').style.display = 'block';
     document.getElementById('all').style.display = 'block';
-    
+
+    loadCategory();
     populateCountrySelect("mw_country");
     //loadCases_Chart();
 });
@@ -375,15 +376,13 @@ function reportCase(event) {
     document.getElementById("report_btn").disabled = true;
     var check = document.getElementById('info_check');
     var pp_status = document.getElementById('mw_passport');
-    if (check.checked) {
-        if (pp_status === "Unknown") {
-            addMigrantWorker();
-        } else {
-            getMWCheck();
-        }
+
+    if (pp_status === "Unknown") {
+        addMigrantWorker();
     } else {
-        alert("Agree to the Declaration Please");
+        getMWCheck();
     }
+
 
 }
 
@@ -648,7 +647,7 @@ function sendEmail() {
 
 function loadCity() {
     let id = $("#mw_country :selected").attr('id');
-    
+
 
     loadOrgan('UG', 'mw_lco', "<option  disabled selected hidden >Sending Recruitment Agency</option>");
     loadOrgan(id, 'mw_fco', "<option  disabled selected hidden >Receiving Recruitment Agency</option>");
@@ -754,8 +753,8 @@ function caseToEsafe() {
     let mw_fco = document.getElementById("mw_fco").value;
     let mw_fco_tel = $("#mw_fco :selected").attr('name');
     let mw_fco_email = $("#mw_fco :selected").attr('value');
-    let mw_emp_name = document.getElementById("mw_emp_name").value;
-    let mw_emp_number = document.getElementById("mw_emp_number").value;
+    let mw_emp_name = "NA";// document.getElementById("mw_emp_name").value;
+    let mw_emp_number = "NA";//document.getElementById("mw_emp_number").value;
     let location = document.getElementById("mw_address").value;
     let mw_current_loca = document.getElementById("mw_current_loca").value;
     let mw_passport_status = document.getElementById("mw_passport_status").value;
@@ -853,7 +852,7 @@ function insertCase(case_status, who_org, who_name, who_phone, who_email, who_ad
 
                 document.getElementById("report_btn").disabled = false;
             } else {
-                   Swal.fire({
+                Swal.fire({
                     icon: 'info',
                     title: 'Case Registered with Ticket: ' + obj.error_msg,
                     text: 'Migrant Worker :' + name,
@@ -1141,4 +1140,6 @@ function assignCase_Officer(caseticket, name, caseType, caseDetails, assigneeId,
         console.log('ERROR: ' + err);
     });
 }
+
+
 

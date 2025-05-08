@@ -27,8 +27,8 @@ $(document).ready(function () {
     getAccount(email);
     count();
     loadCases_Chart();
-    loadCasesMgt_Chart();
-    loadCasesSubMgt_Chart();
+    //loadCasesMgt_Chart();
+    //loadCasesSubMgt_Chart();
     //colorPrint();
     //console.log('Email:' + mode);
     //loadCases();
@@ -87,8 +87,8 @@ function getAccount(input) {
                             userid = value.resid;
                             res_name = value.name;
                             act_name = value.name;
-                            
-                            
+
+
                             setAdmin_role(value.role);
                             roleSetter(value.role);
 
@@ -133,7 +133,6 @@ function getAccount(input) {
 
 
 function roleSetter(input) {
-    console.log(input);
     if (input === "1") {
         document.getElementById('div_admin').style.display = 'block';
     } else if (input === "2") {
@@ -259,7 +258,8 @@ function loadCases_Chart() {
             contentType: false,
             beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
                 $("#bar_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-                $("#pie_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+                $("#status_chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+                $("#pieChart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
 
             },
             complete: function (data) {
@@ -275,10 +275,16 @@ function loadCases_Chart() {
                     let row = "";
                     if (!isEmpty(data)) {
                         var value = data.Case_ticket;
-                        //console.log("1: "+value.length);
-                        //console.log("2: "+Object.keys(value).length);
+                        //console.log(value);
+
+                        const categoryCounts = getCategoryCounts(value);
+                        const dateCounts = getDateCounts(value);
+
                         case_Status(value);
                         case_Category(value);
+                        createLineChart("comp_line_Chart", Object.keys(dateCounts), Object.values(dateCounts));
+                        createPieChart("pieChart", Object.keys(categoryCounts), Object.values(categoryCounts));
+
                     } else {
                         //row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
@@ -291,20 +297,74 @@ function loadCases_Chart() {
                 }
             },
             error: function (d) {
-                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
-                if (ajaxOptions === 'timeout') {
-                    alert("ajax Error", "Connection Timeout");
-                } else {
-                    alert("ajax Error", "Sorry! Something wrong, please try again");
-                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-                //console.log(d);
+
+                console.log(d);
             }
         });
     } catch (ex) {
         alert("Exception", ex);
     }
 }
+
+
+function getCategoryCounts(data) {
+    const counts = {};
+    data.forEach(ticket => {
+        const category = ticket.comp_category;
+        counts[category] = (counts[category] || 0) + 1;
+    });
+    return counts;
+}
+
+function getDateCounts(data) {
+    const counts = {};
+    data.forEach(ticket => {
+        const date = new Date(ticket.datereg).toISOString().split('T')[0];
+        counts[date] = (counts[date] || 0) + 1;
+    });
+    return counts;
+}
+
+function getRandomColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+function createPieChart(ctxId, labels, dataPoints) {
+    new Chart(document.getElementById(ctxId), {
+        type: "pie",
+        data: {
+            labels: labels,
+            datasets: [{
+                    data: dataPoints,
+                    backgroundColor: labels.map(() => getRandomColor())
+                }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+}
+
+function createLineChart(ctxId, labels, dataPoints) {
+    new Chart(document.getElementById(ctxId), {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                    label: "Complaints Over Time",
+                    data: dataPoints,
+                    fill: false,
+                    borderColor: "rgba(255, 99, 132, 1)",
+                    tension: 0.1
+                }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+}
+
+
 
 function case_Category(input) {
 
@@ -359,7 +419,7 @@ function case_Status(input) {
         return e.value;
     });
     var leb = ["New Cases", "Confirmed", "Being Solved", "Government Involved", "Cleared", "Compliments"];
-    new Chart("pie_chart", {
+    new Chart("status_chart", {
         type: "bar",
         data: {
             labels: leb,
@@ -432,8 +492,6 @@ function count() {
     countCases_handled(4, 'count_case_handled');
     countCases_handled(0, 'count_case_pend');
     countCases_handled(3, 'count_case_refer');
-    countCandidate();
-    countMW();
 }
 
 function countCases() {
@@ -647,209 +705,6 @@ function countCandidate() {
         alert("Exception", ex);
     }
 }
-
-
-
-function loadCasesMgt_Chart() {
-    //var ctx = document.getElementById('myChart'); //.getContext('2d');
-    try {
-        $.ajax({
-//
-            url: url + "fetch/case_mgt_emb/1/UG",
-            dataType: 'json',
-            type: 'get',
-            cache: false,
-            // timeout:3000, //3 second timeout 
-            processData: false,
-            contentType: false,
-            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
-                $("#user_bar_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-                //$("#pie_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-
-            },
-            complete: function (data) {
-                // $("#pie_body").html("<i class = 'fa fa-spinner spin'></i> Please Wait.." + JSON.stringify(data));
-                //$("#bar_body").html("<i class = 'fa fa-spinner spin'></i> Please Wait.." + JSON.stringify(data));
-            },
-            success: function (data) {
-                var e_data = '';
-                //console.log(data);
-                try {
-                    //$("#mw_case_table_body").empty();
-                    let i = 1;
-                    let row = "";
-                    if (!isEmpty(data)) {
-                        var value = data.case_mgt;
-                        //console.log("1: "+value.length);
-                        //console.log("2: "+Object.keys(value).length);
-                        //case_Status(value);
-                        case_mgt_bar(value);
-                    } else {
-                        //row += '<tr><td colspan="5" align="center">No data</td></tr>';
-                    }
-                    //$("#mw_case_table").append(e_data);
-                    //pager('mw_case_table');
-
-                } catch (e) {
-                    console.log(e);
-                    //ShowError("Response Error", e, loadCases);
-                }
-            },
-            error: function (d) {
-                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
-                if (ajaxOptions === 'timeout') {
-                    alert("ajax Error", "Connection Timeout");
-                } else {
-                    alert("ajax Error", "Sorry! Something wrong, please try again");
-                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-                //console.log(d);
-            }
-        });
-    } catch (ex) {
-        alert("Exception", ex);
-    }
-}
-
-
-function case_mgt_bar(input) {
-
-    var occurences = input.reduce(function (r, row) {
-        r[row.officerId] = ++r[row.officerId] || 1;
-        return r;
-    }, {});
-    var result = Object.keys(occurences).map(function (key) {
-        return {key: key, value: occurences[key]};
-    });
-    //console.log(result);
-    //result.JSON.parse(this.responseText);
-    var labels = result.map(function (e) {
-        return e.key;
-    });
-    var data_x = result.map(function (e) {
-        return e.value;
-    });
-    new Chart("user_bar_Chart", {
-        type: "bar",
-        data: {
-            labels: labels,
-            datasets: [{
-                    backgroundColor: colorPrint(result),
-                    data: data_x
-                }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-                display: true,
-                text: "Cases Per Officers"
-            }
-        }
-    });
-}
-
-
-
-
-
-function loadCasesSubMgt_Chart() {
-    //var ctx = document.getElementById('myChart'); //.getContext('2d');
-    try {
-        $.ajax({
-//
-            url: url + "fetch/subcase_mgt_emb/1",
-            dataType: 'json',
-            type: 'get',
-            cache: false,
-            // timeout:3000, //3 second timeout 
-            processData: false,
-            contentType: false,
-            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
-                $("#user_sub_bar_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-                //$("#pie_Chart").html('<tr><td colspan="60" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
-
-            },
-            complete: function (data) {
-                // $("#pie_body").html("<i class = 'fa fa-spinner spin'></i> Please Wait.." + JSON.stringify(data));
-                //$("#bar_body").html("<i class = 'fa fa-spinner spin'></i> Please Wait.." + JSON.stringify(data));
-            },
-            success: function (data) {
-                var e_data = '';
-                //console.log(data);
-                try {
-                    //$("#mw_case_table_body").empty();
-                    let i = 1;
-                    let row = "";
-                    if (!isEmpty(data)) {
-                        var value = data.sub_case_mgt;
-                        //console.log("1: "+value.length);
-                        //console.log("2: "+Object.keys(value).length);
-                        //case_Status(value);
-                        case_sub_mgt_bar(value);
-                    } else {
-                        //row += '<tr><td colspan="5" align="center">No data</td></tr>';
-                    }
-                    //$("#mw_case_table").append(e_data);
-                    //pager('mw_case_table');
-
-                } catch (e) {
-                    console.log(e);
-                    //ShowError("Response Error", e, loadCases);
-                }
-            },
-            error: function (d) {
-                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
-                if (ajaxOptions === 'timeout') {
-                    alert("ajax Error", "Connection Timeout");
-                } else {
-                    alert("ajax Error", "Sorry! Something wrong, please try again");
-                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-                //console.log(d);
-            }
-        });
-    } catch (ex) {
-        alert("Exception", ex);
-    }
-}
-
-
-function case_sub_mgt_bar(input) {
-
-    var occurences = input.reduce(function (r, row) {
-        r[row.officerId] = ++r[row.officerId] || 1;
-        return r;
-    }, {});
-    var result = Object.keys(occurences).map(function (key) {
-        return {key: key, value: occurences[key]};
-    });
-    //console.log(result);
-    //result.JSON.parse(this.responseText);
-    var labels = result.map(function (e) {
-        return e.key;
-    });
-    var data_x = result.map(function (e) {
-        return e.value;
-    });
-    new Chart("user_sub_bar_Chart", {
-        type: "bar",
-        data: {
-            labels: labels,
-            datasets: [{
-                    backgroundColor: colorPrint(result),
-                    data: data_x
-                }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-                display: true,
-                text: "Sub Cases Per Officers"
-            }
-        }
-    });
-}
-
 
 
 
@@ -1199,7 +1054,7 @@ function loadMySubCases_Officer(input) {
                             e_data += '</td>';
                             e_data += '<td style="background-color:#0A0D71; font-size: 30px; text-align:center; color: #0A0D71">' + dayCounter(getDate_formart(value.datereg)) + ' Days </td>';
                             e_data += '<td>' + value.caseTicket + '</td>';
-                                e_data += '<td>' + value.caseType + '</td>';
+                            e_data += '<td>' + value.caseType + '</td>';
                             e_data += '<td>' + value.caseDetails + '</td>';
                             e_data += '<td>' + value.followUp + '</td>';
                             e_data += '<td>' + value.remarks + '</td>';

@@ -177,23 +177,22 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">User List</h4>
-                                <button class="btn btn-success" id="model_add_new" type="button"> Add New USer</button>
+                                <h4 class="card-title">Category List</h4>
+                                <button class="btn btn-success" id="model_add_new" type="button"> Add New Category</button>
                             </div><!-- comment -->
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table mb-0 table-bordered" id="user_table">
+                                    <table class="table mb-0 table-bordered" id="cat_table">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>UserID</th>
+                                                <th>CatID</th>
                                                 <th>Name</th>
-                                                <th>Phone No.</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
+                                                <th>Description</th>
+                                                <th>Datereg</th>
                                                 <th>Manage</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="user_table_body">
+                                        <tbody id="cat_table_body">
 
                                         </tbody>
                                     </table>
@@ -204,68 +203,6 @@
                 </div>
 
 
-                <div class="row" style="display: none">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Employers(Kafil)</h4>
-                                <button class="btn btn-success" id="model_add_employer" type="button"> Add Employer</button>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="co_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th scope="col">Delete</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Generic ID</th>
-                                                <th scope="col">Employer System ID</th>
-                                                <th scope="col">National ID</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Contact</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="co_body">
-                                            <!--
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            -->
-                                        </tbody>
-                                        <tfoot class="thead-dark">
-                                            <tr>
-                                                <th scope="col">Delete</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Generic ID</th>
-                                                <th scope="col">Employer System ID</th>
-                                                <th scope="col">National ID</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">End Date</th>
-                                                <th scope="col">Salary</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer">
-                            <button class="btn btn-success m-2" onclick="exportTable('co_table')">Export to Excel</button>
-                            <button class="btn btn-secondary m-2" onclick="printTable('co_table')">Print</button>
-                        </div>
-                    </div>
-
-
-
-                </div>
 
             </div>
             <!--**********************************
@@ -278,7 +215,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Manage User</h5>
+                            <h5 class="modal-title">Manage Category</h5>
                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </div>
                         <div class="modal-body">
@@ -287,60 +224,33 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form>
-                                                <div class="form-group">
-                                                    <input  type="text" class="form-control" id="user_organ_id" style="display: none">
-                                                    <input  type="text" class="form-control" id="user_organ_type" style="display: none">
-                                                    <input  type="text" class="form-control" id="user_id" style="display: none">
-                                                    <p>UserID</p>
-                                                    <input  type="text" class="form-control" id="user_res">
-                                                </div>
 
                                                 <div class="form-group">
                                                     <p>Name</p>
-                                                    <input  type="text" class="form-control" id="user_name_txt">
+                                                    <input  type="text" class="form-control" id="cat_id" style="display: none">
+                                                    <input  type="text" class="form-control" id="cat_name">
 
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <p>Email</p>
-                                                    <input  type="text"  class="form-control" id="user_email_txt" onchange="">
+                                                    <p>Description</p>
+                                                    <textarea class="form-control" id="cat_des" rows="3" onchange=""></textarea>
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <p>Phone No.</p>
-                                                    <input  type="text"  class="form-control" id="user_phone_txt" onchange="">
 
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <p>Password</p>
-                                                    <input  type="password"  class="form-control" id="user_pass_txt" onchange="">
-
-                                                </div>
-                                                <div class="form-group" style="display: none">
-                                                    <label>Assigned City</label>                                                      
-                                                    <select class="form-control" id="user_city_txt" onchange="">
-                                                    </select>
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label>User Role</label>                                                      
-                                                    <select class="form-control" id="user_role_txt" onchange="">
-                                                        <option id="1">Admin Rights</option>
-                                                        <option id="2">Normal Rights</option>
-                                                        <option id="1">Commissioner Rights</option>
-                                                        <option id="1">Head EEU Rights</option>
-                                                    </select>
-                                                </div>
                                             </form>
                                         </div>
-                                        <button class="btn btn-primary" id="model_add_button" type="button"> Add</button>
-                                        <br>
-                                        <button class="btn btn-info" id="model_edit_button" type="button"> Edit</button>
-                                        <br>
-                                        <button class="btn btn-danger" id="model_del_button" type="button"> Delete</button>
+                                        <div class="container mt-3">
+                                            <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded shadow-sm">
+                                                <button class="btn btn-primary btn-lg" id="model_add_button" type="button">
+                                                    Add
+                                                </button>
+                                                <button class="btn btn-danger btn-lg" id="model_del_button" type="button">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
 
                                     </div><!-- comment -->
 
@@ -357,69 +267,6 @@
             </div>
 
 
-            <div class="modal" id="manage_Employer" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Manage User</h5>
-                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-sm-12 col-xl-12">
-                                <div class="bg-light rounded h-100 p-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <p>Employer ID</p>
-                                                    <input  type="text" class="form-control" id="emp_gen_id" disabled style="display: none">
-                                                    <input  type="text" class="form-control" id="emp_id" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <p>National ID Number</p>
-                                                    <input  type="text" class="form-control" id="emp_nin">
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <p>Name</p>
-                                                    <input  type="text"  class="form-control" id="emp_name" onchange="">
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <p>Phone No.</p>
-                                                    <input  type="text"  class="form-control" id="emp_phone" onchange="">
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <p>Email</p>
-                                                    <input  type="text"  class="form-control" id="emp_email" onchange="">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="emp_attach" class="col-sm-6 col-form-label">Choose National ID Copy</label>
-                                                    <input type="file" class="file-upload-default" id="emp_attach" accept="image/x-png,image/jpg,image/jpeg">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <button class="btn btn-primary" id="model_add_emp" type="button"> Add</button>
-                                        <br>
-                                        <button class="btn btn-info" id="model_edit_emp" type="button" style="display: none"> Edit</button>
-                                        <br>
-                                        <button class="btn btn-danger" id="model_del_emp" type="button"> Delete</button>
-
-                                    </div><!-- comment -->
-
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!--**********************************
                 Footer start
@@ -487,7 +334,7 @@
 
             <script src="dash/constants.js"></script>
             <script src="dash/gen.js"></script>
-            <script src="dash/company.js"></script>
+            <script src="dash/category.js"></script>
 
     </body>
 

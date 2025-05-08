@@ -15,9 +15,8 @@
         <link href="./vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
         <link href="./css/style.css" rel="stylesheet">
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1"></script>
-        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-        <script src="./js/chartjs-plugin-zoom.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <body>
@@ -151,6 +150,8 @@
                                     class="nav-text">Users & Roles</span></a></li>  
                         <li id="nav_u" style="display: block"><a href="users.html" aria-expanded="false"><i class="icon icon-single-copies"></i><span
                                     class="nav-text">CSO Manager</span></a></li>
+                        <li id="nav_cat" style="display: block"><a href="category.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
+                                    class="nav-text">Category Manager</span></a></li>
                         <li id="nav_man" style="display: block"><a href="manager.html" aria-expanded="false"><i class="icon icon-tag-content"></i><span
                                     class="nav-text">Configuration</span></a></li>
                         <li><a href="report_case.html" aria-expanded="false"><i class="icon icon-alert-circle-exc"></i><span
@@ -315,11 +316,11 @@
                 <div class="container-fluid" id="div_admin" style="display: none">
 
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card">
                                 <div class="stat-widget-two card-body">
                                     <div class="stat-content">
-                                        <div class="stat-text">Total Cases </div>
+                                        <div class="stat-text">All Cases </div>
                                         <div class="stat-digit" id="count_case_total"> 0</div>
                                     </div>
                                     <div class="progress">
@@ -328,7 +329,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card">
                                 <div class="stat-widget-two card-body">
                                     <div class="stat-content">
@@ -341,7 +342,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card">
                                 <div class="stat-widget-two card-body">
                                     <div class="stat-content">
@@ -354,7 +355,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-sm-6" style="display: none">
                             <div class="card">
                                 <div class="stat-widget-two card-body">
                                     <div class="stat-content">
@@ -404,26 +405,29 @@
 
 
                     <div class="row">
-                        <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="col-xl-6 col-lg-6 col-md-8">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Case Status Overview</h4>
+                                    <h4 class="card-title">Case Status</h4>
                                 </div>
                                 <div class="card-body" >
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-8">
                                             <!-- Add a datepicker input element -->
                                             <input type="text" id="datepicker" style="display: none">
-                                            <canvas id="pie_chart" style=" -moz-user-select: none;  -webkit-user-select: none; -ms-user-select: none; width: 100%; height: 370px" ></canvas>
+                                            <canvas id="status_chart" style=" -moz-user-select: none;  -webkit-user-select: none; -ms-user-select: none; width: 100%; height: 560px" ></canvas>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="year-calendar"></div>
+                                    <div class="col-xl-12 col-lg-8">
+                                        <h4>Complaints by Category (Pie)</h4>
+                                        <canvas id="pieChart" style=" -moz-user-select: none;  -webkit-user-select: none; -ms-user-select: none; width: 100%; height: 600px"></canvas>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /# card -->
@@ -449,250 +453,19 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">User Case Graph</h4>
+                                    <h4 class="card-title">Complaints Over Time (Timeline)</h4>
                                 </div>
                                 <div class="card-body">
-                                    <canvas id="user_bar_Chart" ></canvas>
+                                    <canvas id="comp_line_Chart" ></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="row" style="display: none">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">User Sub Cases Graph</h4>
-                                </div>
-                                <div class="card-body">
-
-                                    <canvas id="user_sub_bar_Chart" ></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" style="display: none">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Embassy Users</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table mb-0 table-bordered" id="user_table">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th>UserID</th>
-                                                    <th>Name</th>
-                                                    <th>Phone No.</th>
-                                                    <th>Email</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="user_table_body">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" style="display: none;">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Migrant Worker Reported Cases</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="mw_case_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
-                                            <thead>
-                                                <tr>
-                                                    <!--
-                                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                                    -->
-                                                    <th scope="col">Counter(Days)</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Gen ID</th>
-                                                    <th scope="col">Case Ticket ID</th>
-                                                    <th scope="col">Organisation</th>
-                                                    <th scope="col">Who's Reporting</th>
-                                                    <th scope="col">Phone No.</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Address</th>
-                                                    <th scope="col">Info Source</th>
-                                                    <th scope="col">Mw Name</th>
-                                                    <th scope="col">Mw Phone</th>
-                                                    <th scope="col">Mw Email</th>
-                                                    <th scope="col">Mw UserID</th>
-                                                    <th scope="col">Mw Passport No</th>
-                                                    <th scope="col">Mw Dob</th>
-                                                    <th scope="col">Mw Country</th>
-                                                    <th scope="col">Mw City</th>
-                                                    <th scope="col">Mw Contract No.</th>
-                                                    <th scope="col">Mw Arrival Date</th>
-                                                    <th scope="col">Mw Worked In Me</th>
-                                                    <th scope="col">Mw In House Before</th>
-                                                    <th scope="col">Mw Uganda Address</th>
-                                                    <th scope="col">Mw Permit No.</th>
-                                                    <th scope="col">Mw Passport Status</th>
-                                                    <th scope="col">Mw Employment Sector</th>
-                                                    <th scope="col">Local Agency</th>
-                                                    <th scope="col">Phone</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Foreign Agency</th>
-                                                    <th scope="col">Phone</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Comp Times</th>
-                                                    <th scope="col">Training Center</th>
-                                                    <th scope="col">Medical Center</th>
-                                                    <th scope="col">Employer Name</th>
-                                                    <th scope="col">Employer Phone</th>
-                                                    <th scope="col">Mw Location</th>
-                                                    <th scope="col">Escape Status</th>
-                                                    <th scope="col">House Change</th>
-                                                    <th scope="col">Phone Status</th>
-                                                    <th scope="col">Salary Status</th>
-                                                    <th scope="col">Salary Amount</th>
-                                                    <th scope="col">Food Status</th>
-                                                    <th scope="col">Sleep Status</th>
-                                                    <th scope="col">Rest Status</th>
-                                                    <th scope="col">Wake Up Time</th>
-                                                    <th scope="col">Bed Time</th>
-                                                    <th scope="col">Average Rest Time</th>
-                                                    <th scope="col">House Size</th>
-                                                    <th scope="col">Family Size</th>
-                                                    <th scope="col">Other Maid</th>
-                                                    <th scope="col">Contract Type</th>
-                                                    <th scope="col">Works in Another House</th>
-                                                    <th scope="col">Medical Status</th>
-                                                    <th scope="col">Physical Status</th>
-                                                    <th scope="col">Sexual</th>
-                                                    <th scope="col">Employer Change</th>
-                                                    <th scope="col">Compliant About Foreign Company</th>
-                                                    <th scope="col">Compliant About Local Company</th>
-                                                    <th scope="col">Compliant Other</th>
-                                                    <th scope="col">Contract Status</th>
-                                                    <th scope="col">Work Evaluation</th>
-                                                    <th scope="col">Wake Up Evaluation</th>
-                                                    <th scope="col">Average Wake Time Evaluation</th>
-                                                    <th scope="col">Phone Usage Evaluation</th>
-                                                    <th scope="col">Hygiene Evaluation</th>
-                                                    <th scope="col">Customer Service Evaluation</th>
-                                                    <th scope="col">Employer Complaint Evaluation</th>
-                                                    <th scope="col">Assistance Needed</th>
-                                                    <th scope="col">Complaint Category</th>
-                                                    <th scope="col">Observation</th>
-                                                    <th scope="col">Recommendations</th>
-                                                    <th scope="col">Action</th>
-                                                    <th scope="col">Registra</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="mw_case_table_body">
-                                                <!--
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                -->
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <!--
-                                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                                    -->
-                                                    <th scope="col">Counter(Days)</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Gen ID</th>
-                                                    <th scope="col">Case Ticket ID</th>
-                                                    <th scope="col">Organisation</th>
-                                                    <th scope="col">Who's Reporting</th>
-                                                    <th scope="col">Phone No.</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Address</th>
-                                                    <th scope="col">Info Source</th>
-                                                    <th scope="col">Mw Name</th>
-                                                    <th scope="col">Mw Phone</th>
-                                                    <th scope="col">Mw Email</th>
-                                                    <th scope="col">Mw UserID</th>
-                                                    <th scope="col">Mw Passport No</th>
-                                                    <th scope="col">Mw Dob</th>
-                                                    <th scope="col">Mw Country</th>
-                                                    <th scope="col">Mw City</th>
-                                                    <th scope="col">Mw Contract No.</th>
-                                                    <th scope="col">Mw Arrival Date</th>
-                                                    <th scope="col">Mw Worked In Me</th>
-                                                    <th scope="col">Mw In House Before</th>
-                                                    <th scope="col">Mw Uganda Address</th>
-                                                    <th scope="col">Mw Permit No.</th>
-                                                    <th scope="col">Mw Passport Status</th>
-                                                    <th scope="col">Mw Employment Sector</th>
-                                                    <th scope="col">Local Agency</th>
-                                                    <th scope="col">Phone</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Foreign Agency</th>
-                                                    <th scope="col">Phone</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Comp Times</th>
-                                                    <th scope="col">Training Center</th>
-                                                    <th scope="col">Medical Center</th>
-                                                    <th scope="col">Employer Name</th>
-                                                    <th scope="col">Employer Phone</th>
-                                                    <th scope="col">Mw Location</th>
-                                                    <th scope="col">Escape Status</th>
-                                                    <th scope="col">House Change</th>
-                                                    <th scope="col">Phone Status</th>
-                                                    <th scope="col">Salary Status</th>
-                                                    <th scope="col">Salary Amount</th>
-                                                    <th scope="col">Food Status</th>
-                                                    <th scope="col">Sleep Status</th>
-                                                    <th scope="col">Rest Status</th>
-                                                    <th scope="col">Wake Up Time</th>
-                                                    <th scope="col">Bed Time</th>
-                                                    <th scope="col">Average Rest Time</th>
-                                                    <th scope="col">House Size</th>
-                                                    <th scope="col">Family Size</th>
-                                                    <th scope="col">Other Maid</th>
-                                                    <th scope="col">Contract Type</th>
-                                                    <th scope="col">Works in Another House</th>
-                                                    <th scope="col">Medical Status</th>
-                                                    <th scope="col">Physical Status</th>
-                                                    <th scope="col">Sexual</th>
-                                                    <th scope="col">Employer Change</th>
-                                                    <th scope="col">Compliant About Foreign Company</th>
-                                                    <th scope="col">Compliant About Local Company</th>
-                                                    <th scope="col">Compliant Other</th>
-                                                    <th scope="col">Contract Status</th>
-                                                    <th scope="col">Work Evaluation</th>
-                                                    <th scope="col">Wake Up Evaluation</th>
-                                                    <th scope="col">Average Wake Time Evaluation</th>
-                                                    <th scope="col">Phone Usage Evaluation</th>
-                                                    <th scope="col">Hygiene Evaluation</th>
-                                                    <th scope="col">Customer Service Evaluation</th>
-                                                    <th scope="col">Employer Complaint Evaluation</th>
-                                                    <th scope="col">Assistance Needed</th>
-                                                    <th scope="col">Complaint Category</th>
-                                                    <th scope="col">Observation</th>
-                                                    <th scope="col">Recommendations</th>
-                                                    <th scope="col">Action</th>
-                                                    <th scope="col">Registra</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                 
 
 
-                    </div>
 
                 </div>
             </div>
@@ -1305,38 +1078,6 @@
         <script src="./js/quixnav-init.js"></script>
         <script src="./js/custom.min.js"></script>
 
-
-        <!-- Vectormap -->
-        <script src="./vendor/raphael/raphael.min.js"></script>
-        <script src="./vendor/morris/morris.min.js"></script>
-
-        <script src="./vendor/circle-progress/circle-progress.min.js"></script>
-        <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
-
-        <script src="./vendor/gaugeJS/dist/gauge.min.js"></script>
-
-        <!--  flot-chart js -->
-        <script src="./vendor/flot/jquery.flot.js"></script>
-        <script src="./vendor/flot/jquery.flot.resize.js"></script>
-
-        <!-- Owl Carousel -->
-        <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
-
-        <!-- Counter Up -->
-        <script src="./vendor/jqvmap/js/jquery.vmap.min.js"></script>
-        <script src="./vendor/jqvmap/js/jquery.vmap.usa.js"></script>
-        <script src="./vendor/jquery.counterup/jquery.counterup.min.js"></script>
-
-
-        <script src="./vendor/chartist/js/chartist.min.js"></script>
-        <script src="./vendor/moment/moment.min.js"></script>
-        <script src="./vendor/pg-calendar/js/pignose.calendar.min.js"></script>
-
-        <script src="./js/dashboard/dashboard-2.js"></script>
-
-        <script src="./js/dashboard/dashboard-1.js"></script>
-
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
         <!-- Datatable -->
         <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>

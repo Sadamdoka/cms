@@ -9,40 +9,7 @@ var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
 var user = '';
 var role = '';
 $(document).ready(function () {
-//getting email in url
-    /*
-     var queryString = decodeURIComponent(window.location.search);
-     queryString = queryString.substring(1);
-     var queries = queryString.split("&");
-     for (var i = 0; i < queries.length; i++)
-     {
-     // user = queries[i];
-     }
-     user = queryString.substring(0, queryString.length);
-     idle_timeout();
-     document.addEventListener('contextmenu', event => event.preventDefault());
-     */
 
-// init();
-//
-//getUser(user);
-//getAccount(user);
-    /*
-     navLink(document.getElementById('nav_home'));
-     navLink(document.getElementById('nav_case_my'));
-     navLink(document.getElementById('nav_acc'));
-     navLink(document.getElementById('nav_case_s'));
-     navLink(document.getElementById('nav_mw_app'));
-     navLink(document.getElementById('nav_mw_check'));
-     navLink(document.getElementById('nav_mw_medical'));
-     navLink(document.getElementById('nav_mw_map'));
-     navLink(document.getElementById('nav_mw_follow'));
-     navLink(document.getElementById('nav_mw_asses'));
-     navLink(document.getElementById('nav_mw_tran'));
-     navLink(document.getElementById('nav_mw_report'));
-     navLink(document.getElementById('nav_mw_inv'));
-     navLink(document.getElementById('nav_mw_status'));
-     */
     document.addEventListener('contextmenu', event => event.preventDefault());
 });
 function sessionEmpty(input) {
@@ -1880,6 +1847,80 @@ function populateTimeline(logData) {
         timeline.appendChild(timelineEvent);
     });
 }
+
+
+
+
+function loadCategory() {
+    try {
+        $.ajax({
+//
+            url: url + "fetch/category/",
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            // timeout:3000, //3 second timeout 
+            processData: false,
+            contentType: false,
+            beforeSend: function () {               //tbody.html("<tr><td colspan='5' align='center'><i class = 'fa fa-spinner spin'></i> Loading</td></tr>");
+                $("#mw_comp_category").html('<tr><td colspan="8" align="center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></td></tr>');
+            },
+            complete: function (data) {
+                //tbody.html("<i class = 'fa fa-spinner spin'></i> Please Wait.."+ JSON.stringify(data));
+            },
+            success: function (data) {
+                var e_data = '';
+                try {
+                    $("#mw_comp_category").empty();
+                    let i = 1;
+                    let row = "";
+                    if (!isEmpty(data)) {
+                        //console.log(data);
+                        row += "";
+                        var value = data.category;
+                        if (!isJsonArray(value)) {
+                            //console.log(value.id);
+
+                            e_data += '<option id="' + value.id + '" name="' + value.description + '" ">';
+                            e_data += value.name;
+                            e_data += '</option>';
+
+                        } else {
+                            $.each(data.category, function (index, value) {
+                                //console.log(value);
+
+                                e_data += '<option id="' + value.id + '" name="' + value.description + '" ">';
+                                e_data += value.name;
+                                e_data += '</option>';
+                                ++i;
+                            });
+                        }
+                    } else {
+                        row += '<tr><td colspan="8" align="center">No data</td></tr>';
+                    }
+                    $("#mw_comp_category").append(e_data);
+                } catch (e) {
+                    ShowError("Response Error", e, loadCategory);
+                }
+            },
+            error: function (d) {
+                //$("#gallery_table").html('<tr><td colspan="5" align="center">Sorry an Expected error Occured.</td></tr>');
+                if (ajaxOptions === 'timeout') {
+                    alert("ajax Error", "Connection Timeout");
+                } else {
+                    alert("ajax Error", "Sorry! Something wrong, please try again");
+                    //ShowError("ajax Error", thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+                //console.log(d);
+            }
+        });
+    } catch (ex) {
+        alert("Exception", ex);
+    }
+}
+
+
+
 
 
 

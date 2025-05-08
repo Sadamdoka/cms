@@ -14,6 +14,7 @@ var organs = '';
 var act_name = '';
 $(document).ready(function () {
     
+    loadCategory();
     populateCountrySelect("mw_country");
 });
 function createNode(element) {
