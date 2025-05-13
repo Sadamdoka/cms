@@ -509,7 +509,7 @@ function getMWDetails(pass) {
                         if (!isJsonArray(jdata)) {
                             //console.log(jdata.userid);
                             document.getElementById('mw_userid').value = jdata.userid;
-                            caseToEsafe();
+                            caseToCeemis();
                             //e_data += '<div class="desc"><div class="thumb"><span class="badge bg-theme"><i class="fa fa-clock-o"></i></span></div><div class="details"><p><muted>' + value.datreg + '</muted><br/><a href="#">' + value.activity + '</a>&nbsp&nbsp' + value.act_by + '<br/></p></div></div>';
                         } else {
                             //Add ArrayList
@@ -634,7 +634,7 @@ function loadCity() {
 
 
 
-function caseToEsafe() {
+function caseToCeemis() {
 //Who Selecter
     //Who Details
     let mw_sys_id = document.getElementById("mw_userid").value;
