@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
+var url = "https://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
 //var url = "https://esafeafrica.com/api.ceemis/service/";
 var user = '';
 var role = '';
