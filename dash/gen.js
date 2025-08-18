@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var url = "https://ceemis.mglsd.go.ug:8080/api.ceemis/service/"
+var url = "https://ceemis.mglsd.go.ug:8443/api.ceemis/service/"
 //var url = "https://esafeafrica.com/api.ceemis/service/";
 var user = '';
 var role = '';
@@ -612,7 +612,7 @@ function loadLogsTimelime(input, elm) {
                     let i = 1;
                     let row = "";
                     if (!isEmpty(data)) {
-                        console.log(data);
+                       // console.log(data);
                         loadTimeline(elm, data);
 
                     } else {

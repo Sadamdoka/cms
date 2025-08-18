@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var url = "https://ceemis.mglsd.go.ug:8080/api.ceemis/service/";
+var url = "https://ceemis.mglsd.go.ug:8443/api.ceemis/service/";
 //varr url = "https://esafeafrica.com/api.ceemis/service/";
 
 var user = '';
@@ -378,16 +378,11 @@ function manageCase(input) {
 
     let case_type = $(input).attr("value");
     let nam = $(input).attr("name");
+    //console.log(case_type);
     window.groupID = nam;
-    if (case_type === '1') {
-        document.getElementById('model_t_type').value = '1';
-        getCaseShort(input);
-    } else if (case_type === '2') {
-        document.getElementById('model_c_type').value = '2';
-        getCaseDet(input);
-    } else {
-        alert('Case has no type');
-    }
+    document.getElementById('model_c_type').value = '2';
+    getCaseDet(input);
+
 
     //loadLogs(input, 'act_mw_table', 'act_mw_table_body');
     loadLogsTimelime(input, 'timeline');
@@ -446,6 +441,11 @@ function getCaseDet(input) {
                         if (!isJsonArray(jdata)) {
                             //Add Singular values
                             //var value = jdata;
+
+                            // Convert the object into a JSON string
+                            const caseData = JSON.stringify(jdata);
+                            // Store the JSON string in sessionStorage
+                            sessionStorage.setItem('cData', caseData);
 
                             // console.log(value.email);
                             getCaseMgt(jdata.case_id);
@@ -700,6 +700,8 @@ function assignOfficer(event) {
         console.log('ERROR: ' + err);
     });
 }
+
+
 
 
 
@@ -1023,4 +1025,52 @@ function loadOfficers() {
     } catch (ex) {
         alert("Exception", ex);
     }
+}
+
+
+document.getElementById('btn_send_helpline').addEventListener('click', sendHelpline);
+function sendHelpline(event) {
+    event.preventDefault();
+    console.log("Send to Helpline");
+
+
+    const storedCaseData = sessionStorage.getItem('cData');
+    const cd = JSON.parse(storedCaseData);
+    console.log(cd);
+
+
+    var settings = {
+        url: "https://backend.bitz-itc.com/api/webhook/ceemis/create/",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify({
+            "mw_name": cd,
+            "mw_phone": cd,
+            "mw_email": cd.mw_email,
+            "mw_passport": cd.mw_passport_no,
+            "mw_sys_id": cd.case_id || cd.mw_sys_id,
+            "mw_country": cd.cty,
+            "mw_city": cd.mw_city,
+            "emp_sector": cd.emp_sector,
+            "emp_name": cd.emp_name,
+            "emp_number": cd.emp_phone,
+            "location": cd.mw_location,
+            "mw_loca": cd.mw_loca,
+            "comp_category": cd.comp_category,
+            "mw_narative": cd.mw_assistance
+        })
+    };
+
+    $.ajax(settings)
+            .done(function (response) {
+                alert("Complaint submitted successfully!");
+                console.log(response);
+            })
+            .fail(function (xhr, status, error) {
+                alert("Failed to submit complaint. Please try again.\nError: " + error);
+                console.error(xhr.responseText);
+            });
 }
