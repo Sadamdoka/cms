@@ -43,9 +43,9 @@ function login() {
     let password = document.getElementById("floatingPassword").value;
     formData.append('email', userid);
     formData.append('password', password);
-    console.log(url + "conditions/user");
+    //console.log(url + "conditions/user_ceemis");
     $.ajax({
-        url: url + "conditions/user",
+        url: url + "conditions/user_ceemis",
         //dataType: 'json',
         data: formData,
         type: 'POST',
@@ -53,8 +53,15 @@ function login() {
         contentType: false,
         cache: false,
         success: function (data) {
-            checker(data.status, userid);
             //console.log(data);
+            //console.log(data.status);
+            //const obj = JSON.parse(data);
+            if (data.status === true) {
+                console.log(data.error_msg);
+                checker(data.status, data.error_msg);
+            } else {
+                alert(data.error_msg);
+            }
         }
         ,
         error: function (d) {
@@ -90,7 +97,7 @@ let refreshButton = document.querySelector('#refreshButton');
 
 
 // alphaNums contains the characters with which you want to create the CAPTCHA
-let alphaNums = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',  'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',  '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let alphaNums = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 let emptyArr = [];
 
 // This loop generates a random string of 7 characters using alphaNums

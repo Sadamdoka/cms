@@ -392,9 +392,6 @@ function addMigrantWorker() {
                 return response.text();
             }).then(function (data) {
                 const obj = JSON.parse(data);
-                //console.log(data);
-                //console.log(obj);
-                //console.log(obj.status);
                 if (obj.status === true) {
                     getMWDetails(pass);
                 } else {
