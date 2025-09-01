@@ -245,6 +245,7 @@ function loadUsers(input) {
 //loadCases_Chart(ctx);
 
 function loadCases_Chart() {
+    //console.log("Load Cats");
     var ctx = document.getElementById('myChart'); //.getContext('2d');
     try {
         $.ajax({
