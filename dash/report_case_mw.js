@@ -477,7 +477,6 @@ function getMWCheck() {
     }
 }
 
-
 function getMWDetails(pass) {
 //var pass = document.getElementById('mw_passport');
 //let id = $(input).attr("id");

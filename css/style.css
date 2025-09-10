@@ -25157,134 +25157,133 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 
 .chat-container {
-      width: 100%;
-      max-width: 100%;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
+    width: 100%;
+    max-width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
 
-    .messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      background-color: #f1f1f1;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      flex-direction: column;
-    }
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
 
-    .message {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-      max-width: 70%;
-      animation: fadeIn 0.5s ease-out;
-    }
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 70%;
+    animation: fadeIn 0.5s ease-out;
+}
 
-    /* Corrected alignment for user and bot messages */
-    .message.user {
-      align-self: flex-end;
-      text-align: right;
-    }
+/* Corrected alignment for user and bot messages */
+.message.user {
+    align-self: flex-end;
+    text-align: right;
+}
 
-    .message.bot {
-      align-self: flex-start;
-      text-align: left;
-    }
+.message.bot {
+    align-self: flex-start;
+    text-align: left;
+}
 
-    .message .text {
-      padding: 15px;
-      border-radius: 15px;
-      max-width: 100%;
-      font-size: 16px;
-      word-wrap: break-word;
-      background-color: #e0e0e0;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
+.message .text {
+    padding: 15px;
+    border-radius: 15px;
+    max-width: 100%;
+    font-size: 16px;
+    word-wrap: break-word;
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
 
-    .message.user .text {
-      background-color: #0084ff;
-      color: white;
-    }
+.message.user .text {
+    background-color: #0084ff;
+    color: white;
+}
 
-    .message.bot .text {
-      background-color: #f0f0f0;
-    }
+.message.bot .text {
+    background-color: #f0f0f0;
+}
 
-    .message:hover .text {
-      transform: scale(1.05);
-    }
+.message:hover .text {
+    transform: scale(1.05);
+}
 
-    .metadata {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 5px;
-    }
+.metadata {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
 
-    .input-container {
-      display: flex;
-      padding: 15px;
-      background-color: #fff;
-      border-top: 1px solid #ddd;
-      justify-content: space-between;
-      align-items: center;
-    }
+.input-container {
+    display: flex;
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .input-container select,
-    .input-container input {
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 25px;
-      font-size: 16px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
+.input-container select,
+.input-container input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
 
-    .input-container select {
-      width: 20%;
-    }
+.input-container select {
+    width: 20%;
+}
 
-    .input-container input {
-      width: 55%;
-    }
+.input-container input {
+    width: 55%;
+}
 
-    .input-container input:focus,
-    .input-container select:focus {
-      border-color: #0084ff;
-    }
+.input-container input:focus,
+.input-container select:focus {
+    border-color: #0084ff;
+}
 
-    .input-container button {
-      padding: 12px;
-      border: none;
-      background-color: #0084ff;
-      color: white;
-      font-size: 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 15%;
-    }
+.input-container button {
+    padding: 12px;
+    border: none;
+    background-color: #0084ff;
+    color: white;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 15%;
+}
 
-    .input-container button:hover {
-      background-color: #0056b3;
-    }
+.input-container button:hover {
+    background-color: #0056b3;
+}
 
-    @keyframes fadeIn {
-      from {
+@keyframes fadeIn {
+    from {
         opacity: 0;
         transform: translateY(20px);
-      }
-      to {
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
-    
+}
