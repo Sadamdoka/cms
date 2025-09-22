@@ -174,8 +174,8 @@
                 <!-- row -->
                 <div class="row">
 
-                    <div class="col-12">
-                        <div class="card" style="display: none">
+                    <div class="col-12"  style="display: none">
+                        <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Search by Companies</h4>
                             </div>
@@ -209,12 +209,11 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="mw_app_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
-                                        <thead class="thead-dark">
+                                    <table id="mw_app_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 100%">
+                                        <thead class="thead-primary">
                                             <tr>
                                                 <!--
                                                 <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                               
                                                 -->
                                                 <th scope="col">Manage</th>
                                                 <th scope="col">Gen ID</th>
@@ -223,10 +222,7 @@
                                                 <th scope="col">Passport</th>
                                                 <th scope="col">Names</th>
                                                 <th scope="col">Gender</th>
-                                                <th scope="col">Address</th>
                                                 <th scope="col">Current Location</th>
-                                                <th scope="col">Kin Names</th>
-                                                <th scope="col">kin_phone</th>
                                             </tr>
                                         </thead>
                                         <tbody id="mw_app_table_body">
@@ -241,25 +237,7 @@
                                             </tr>
                                             -->
                                         </tbody>
-                                        <tfoot class="thead-dark">
-                                            <tr>
-                                                <!--
-                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                               
-                                                -->
-                                                <th scope="col">Manage</th>
-                                                <th scope="col">Gen ID</th>
-                                                <th scope="col">User ID</th>
-                                                <th scope="col">National ID</th>
-                                                <th scope="col">Passport</th>
-                                                <th scope="col">Names</th>
-                                                <th scope="col">Gender</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Current Location</th>
-                                                <th scope="col">Kin Names</th>
-                                                <th scope="col">kin_phone</th>
-                                            </tr>
-                                        </tfoot>
+
                                     </table>
                                 </div>
                             </div>
@@ -287,7 +265,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Manage Migrant Worker</h5>
+                        <h5 class="modal-title">Manage</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -438,7 +416,7 @@
 
                             <div class="bg-light rounded h-100 p-4">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    
+
                                     <li class="nav-item active">
                                         <a class="nav-link" id="nav-act-tab" data-toggle="tab"
                                            href="#nav-act" >Activity History</a>
@@ -453,11 +431,11 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content pt-3" id="nav-tabContent">
-                                    
+
                                     <div class="tab-pane fade show active" id="nav-act" role="tabpanel" aria-labelledby="nav-act-tab">
                                         <div class="modal-body">
-                                           
-                                               <div id="timelineContainer">
+
+                                            <div id="timelineContainer">
                                                 <ul class="timeline" id="timeline">
                                                     <!-- Timeline events will be dynamically inserted here -->
                                                 </ul>
@@ -543,7 +521,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

@@ -235,7 +235,7 @@ function loadMyCases() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#case_mgt_table").append(e_data);
-                    pager('case_mgt_table');
+                    paginateTable('case_mgt_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -277,6 +277,7 @@ function loadMyCases_Officer(input) {
             },
             success: function (data) {
                 var e_data = '';
+                console.log(data);
                 try {
                     $("#case_mgt_body").empty();
                     let i = 1;
@@ -322,7 +323,7 @@ function loadMyCases_Officer(input) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#case_mgt_table").append(e_data);
-                    pager('case_mgt_table');
+                    paginateTable('case_mgt_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -363,6 +364,7 @@ function loadMySubCases() {
             },
             success: function (data) {
                 var e_data = '';
+                console.log(data);
                 try {
                     $("#subcase_mgt_body").empty();
                     let i = 1;
@@ -409,7 +411,7 @@ function loadMySubCases() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#subcase_mgt_table").append(e_data);
-                    pager('subcase_mgt_table');
+                    paginateTable('subcase_mgt_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -496,7 +498,7 @@ function loadMySubCases_Officer(input) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#subcase_mgt_table").append(e_data);
-                    pager('subcase_mgt_table');
+                    paginateTable('subcase_mgt_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -592,7 +594,7 @@ function SearchCases(event) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#case_mgt_table").append(e_data);
-                    pager('case_mgt_table');
+                    paginateTable('case_mgt_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -626,6 +628,8 @@ function manageCase(input) {
     //loadLogs(input, 'act_mw_table', 'act_mw_table_body');
     loadLogsTimelime(input, 'timeline');
     loadAttachment(input, 'model_att_table', 'model_attach_table_body');
+    
+    loadSelCategory('category_select');
     loadSubcaseCat(input);
     loadSubcaseCatTable(input);
     loadSubCaseOfficer_ticket(input);
@@ -642,10 +646,12 @@ function manageSubCase(input) {
     let nam = $(input).attr("name");
     window.subgroupID = nam;
 
-    subloadMsg(name);
+    subloadMsg(nam);
     getSubCases(input);
     getSubCaseMgt(input);
     loadLogsTimelime(input, 'sub_timeline');
+    
+        //loadSelCategory('mw_comp_category');
     //loadLogs(input, 'sub_act_mw_table', 'sub_act_mw_table_body');
     loadAttachment(input, 'sub_model_att_table', 'sub_model_attach_table_body');
     $('#manage_sub_case').modal('show');
@@ -1094,7 +1100,7 @@ function getCaseMgt(input) {
                     }
                     //appending data
                     $("#logs").append(e_data);
-                    //pager('logs');
+                    //paginateTable('logs');
                 } catch (e) {
                     ShowError("Response Error", e, getCaseShort);
                 }
@@ -1168,7 +1174,7 @@ function getSubCaseMgt(input) {
                     }
                     //appending data
                     $("#logs").append(e_data);
-                    pager('logs');
+                    paginateTable('logs');
                 } catch (e) {
                     ShowError("Response Error", e, getCaseShort);
                 }
@@ -1600,7 +1606,7 @@ function loadSubCaseOfficer_ticket(input) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#subcase_mw_table").append(e_data);
-                    pager('subcase_mw_table');
+                    //paginateTable('subcase_mw_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadMyCases);
                 }
@@ -1652,7 +1658,7 @@ function addsubCase_cat(event) {
     let formData = new FormData();
 
     let caseticket = document.getElementById("model_t_ticket").value;
-    let name = document.getElementById("mw_comp_category").value;
+    let name = document.getElementById("category_select").value;
 
     //console.log(officer);
     formData.append('caseid', caseticket);
@@ -1745,7 +1751,7 @@ function loadSubcaseCat(input) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#sub_list").append(e_data);
-                    //pager('subcase_mw_table');
+                    //paginateTable('subcase_mw_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadSubcaseCat);
                 }
@@ -1820,7 +1826,7 @@ function loadSubcaseCatTable(input) {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#cat_table").append(e_data);
-                    pager('cat_table');
+                    //paginateTable('cat_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadSubcaseCatTable);
                 }

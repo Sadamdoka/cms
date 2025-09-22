@@ -255,7 +255,7 @@ function loadCompanies_Home() {
                         row += '<tr><td colspan="20" align="center">No data</td></tr>';
                     }
                     $("#co_table").append(e_data);
-                    pager('co_table');
+                    paginateTable('co_table');
                     //exportToExcel('co_table');
                 } catch (e) {
                     console.log(e);
@@ -547,7 +547,7 @@ function loadUsers() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#acc_table").append(e_data);
-                    pager('acc_table');
+                    paginateTable('acc_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadUsers);
                 }

@@ -343,15 +343,11 @@ function populateCaseTable(data) {
             <td>${caseItem.mw_passport_no}</td>
             <td>${caseItem.comp_category}</td>
             <td>${caseItem.mw_location || ''} OR ${caseItem.mw_loca || ''}</td>
-            <td>${caseItem.local_agency}</td>
-            <td>${caseItem.foreign_agency}</td>
-            <td>${caseItem.who_name}</td>
-            <td>${caseItem.who_phone}</td>
         `;
 
         $("#mw_case_table").append(row);
     });
-    pager('mw_case_table');
+    paginateTable('mw_case_table');
 }
 
 function getStatus(input) {
@@ -661,7 +657,7 @@ function assignOfficer(event) {
     let formData = new FormData();
 
     let caseticket = document.getElementById("model_c_id").value;
-    let caseType = document.getElementById("model_c_type").value;
+    let caseType = document.getElementById("model_c_cc").value;
     let caseDetails = document.getElementById("model_c_det").value;
     let assigneeId = document.getElementById("model_c_assignid").value;
     let assignee = document.getElementById("model_c_assignee").value;

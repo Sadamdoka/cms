@@ -213,6 +213,7 @@ function loadCategory() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#cat_table").append(e_data);
+                    paginateTable('cat_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadCategory);
                 }

@@ -32,7 +32,7 @@ $(document).ready(function () {
     getOrgans();
     //datepicker('model_follow_date');
     //loadWorkers();
-    //pager();
+    //paginateTable();
 });
 function createNode(element) {
     return document.createElement(element);
@@ -250,10 +250,7 @@ function loadWorkers() {
                             e_data += '<td>' + value.passport + '</td>';
                             e_data += '<td>' + value.names + '</td>';
                             e_data += '<td>' + gender(value.gender) + '</td>';
-                            e_data += '<td>' + value.address + '</td>';
                             e_data += '<td>' + value.location + '</td>';
-                            e_data += '<td>' + value.kin_name + '</td>';
-                            e_data += '<td>' + value.kin_phone + '</td>';
                             e_data += '</tr>';
                         } else {
                             $.each(data.user_worker, function (index, value) {
@@ -267,10 +264,7 @@ function loadWorkers() {
                                 e_data += '<td>' + value.passport + '</td>';
                                 e_data += '<td>' + value.names + '</td>';
                                 e_data += '<td>' + gender(value.gender) + '</td>';
-                                e_data += '<td>' + value.address + '</td>';
                                 e_data += '<td>' + value.location + '</td>';
-                                e_data += '<td>' + value.kin_name + '</td>';
-                                e_data += '<td>' + value.kin_phone + '</td>';
                                 e_data += '</tr>';
                                 ++i;
                             });
@@ -279,7 +273,7 @@ function loadWorkers() {
                         row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
                     $("#mw_app_table").append(e_data);
-                    pager('mw_app_table');
+                    paginateTable('mw_app_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadWorkers);
                 }
@@ -374,7 +368,7 @@ function loadWorkers_cty(event) {
                         row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
                     $("#mw_app_table").append(e_data);
-                    pager('mw_app_table');
+                    paginateTable('mw_app_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadWorkers);
                 }
@@ -466,7 +460,7 @@ function loadLocalAgency(input) {
                         row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
                     $("#mw_app_table").append(e_data);
-                    pager('mw_app_table');
+                    paginateTable('mw_app_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadLocalAgency);
                 }
@@ -554,7 +548,7 @@ function loadForeignAgency(input) {
                         row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
                     $("#mw_app_table").append(e_data);
-                    pager('mw_app_table');
+                    paginateTable('mw_app_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadForeignAgency);
                 }
@@ -819,7 +813,7 @@ function searchMW(event) {
                         row += '<tr><td colspan="5" align="center">No data</td></tr>';
                     }
                     $("#mw_app_table").append(e_data);
-                    pager('mw_app_table');
+                    paginateTable('mw_app_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadWorkers);
                 }

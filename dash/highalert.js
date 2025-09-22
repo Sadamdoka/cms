@@ -337,15 +337,11 @@ function populateCaseTable(data) {
             <td>${caseItem.mw_passport_no}</td>
             <td>${caseItem.comp_category}</td>
             <td>${caseItem.mw_location || ''} OR ${caseItem.mw_loca || ''}</td>
-            <td>${caseItem.local_agency}</td>
-            <td>${caseItem.foreign_agency}</td>
-            <td>${caseItem.who_name}</td>
-            <td>${caseItem.who_phone}</td>
         `;
 
         $("#mw_case_table").append(row);
     });
-    pager('mw_case_table');
+    paginateTable('mw_case_table');
 }
 
 

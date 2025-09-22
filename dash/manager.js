@@ -305,7 +305,7 @@ function loadCity_tb() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#city_table").append(e_data);
-                    pager('city_table');
+                    paginateTable('city_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadCity);
                 }
@@ -1089,7 +1089,7 @@ function loadAmnesty() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#amnesty_table").append(e_data);
-                    pager('amnesty_table');
+                    paginateTable('amnesty_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadCity);
                 }
@@ -1199,7 +1199,7 @@ function loadEmno() {
                         row += '<tr><td colspan="8" align="center">No data</td></tr>';
                     }
                     $("#em_table").append(e_data);
-                    pager('em_table');
+                    paginateTable('em_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadEmno);
                 }

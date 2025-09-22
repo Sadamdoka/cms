@@ -243,7 +243,7 @@ function loadEmployer() {
                         row += '<tr><td colspan="20" align="center">No data</td></tr>';
                     }
                     $("#co_table").append(e_data);
-                    pager('co_table');
+                    paginateTable('co_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadCompanies);
                 }

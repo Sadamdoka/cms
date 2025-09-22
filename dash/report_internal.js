@@ -26,7 +26,7 @@ $(document).ready(function () {
     document.getElementById('sor').style.display = 'block';
     document.getElementById('all').style.display = 'block';
 
-    loadCategory();
+    loadSelCategory('mw_comp_category');
     populateCountrySelect("mw_country");
     //loadCases_Chart();
 });

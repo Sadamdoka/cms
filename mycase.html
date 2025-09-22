@@ -174,12 +174,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">My Assigned Cases</h4>
+                                <h4 class="card-title">Assigned Cases</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="case_mgt_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
-                                        <thead class="thead-dark">
+                                    <table id="case_mgt_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 100%">
+                                        <thead class="thead-primary">
                                             <tr>
                                                 <!--
                                                 <th scope="col"><input class="form-check-input" type="checkbox"></th>
@@ -187,9 +187,9 @@
                                                 <th scope="col">Manage</th>
                                                 <th scope="col">Counter(Days)</th>
                                                 <th scope="col">Case Ticket ID</th>
-                                                <th scope="col">Case Type</th>
+                                                <th scope="col">Case Category</th>
                                                 <th scope="col">Case Details</th>
-                                                <th scope="col">Follow Up Date</th>
+                                                <th scope="col">Last  Update</th>
                                                 <th scope="col">Remarks</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Date</th>
@@ -207,22 +207,6 @@
                                             </tr>
                                             -->
                                         </tbody>
-                                        <tfoot class="thead-dark">
-                                            <tr>
-                                                <!--
-                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                                -->
-                                                <th scope="col">Manage</th>
-                                                <th scope="col">Counter(Days)</th>
-                                                <th scope="col">Case Ticket ID</th>
-                                                <th scope="col">Case Type</th>
-                                                <th scope="col">Case Details</th>
-                                                <th scope="col">Follow Up Date</th>
-                                                <th scope="col">Remarks</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Date</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -244,12 +228,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">My Sub Cases</h4>
+                                <h4 class="card-title">Sub Cases</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="subcase_mgt_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 845px">
-                                        <thead class="thead-dark">
+                                    <table id="subcase_mgt_table" class="table text-start align-middle table-bordered table-hover mb-0" style="min-width: 100%">
+                                        <thead class="thead-primary">
                                             <tr>
                                                 <!--
                                                 <th scope="col"><input class="form-check-input" type="checkbox"></th>
@@ -257,9 +241,9 @@
                                                 <th scope="col">Manage</th>
                                                 <th scope="col">Counter(Days)</th>
                                                 <th scope="col">Case Ticket ID</th>
-                                                <th scope="col">Case Type</th>
+                                                <th scope="col">Case Category</th>
                                                 <th scope="col">Case Details</th>
-                                                <th scope="col">Follow Up Date</th>
+                                                <th scope="col">Last  Update</th>
                                                 <th scope="col">Remarks</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Date</th>
@@ -277,22 +261,6 @@
                                             </tr>
                                             -->
                                         </tbody>
-                                        <tfoot class="thead-dark">
-                                            <tr>
-                                                <!--
-                                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                                -->
-                                                <th scope="col">Manage</th>
-                                                <th scope="col">Counter(Days)</th>
-                                                <th scope="col">Case Ticket ID</th>
-                                                <th scope="col">Case Type</th>
-                                                <th scope="col">Case Details</th>
-                                                <th scope="col">Follow Up Date</th>
-                                                <th scope="col">Remarks</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Date</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -384,7 +352,7 @@
                                     <input type="text"  id="model_t_id" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
                                     <input type="text"  id="model_t_type" placeholder="OrganID " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
                                     <br><!-- comment -->
-                                    <label class="col-sm-6 col-form-label">Case Sub Categories</label>
+                                    <label class="col-sm-6 col-form-label">Other Categories</label>
                                     <div class="col-lg-12 col-sm-12 card-body" style="background-color: white ; color: black">
                                         <ul id="sub_list" class="list-horizontal">
                                             <!--
@@ -439,35 +407,8 @@
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-6">
                                                     <label for="model_c_det" class="col-sm-6 col-form-label">Sub Case Category</label>
-                                                    <select class="form-control" aria-label="Default select example" id="mw_comp_category">
-                                                        <option selected>Open this to Select</option>
-                                                        <option>SALARY & TRANSFER FACILITATION</option>
-                                                        <option>CONTRACT/WELFARE VIOLATION/DISPUTE</option>
-                                                        <option>MEDICAL ASSISTANCE</option>
-                                                        <option>PREGNANCY/BABY ASSISTANCE</option>
-                                                        <option>SEXUAL/PHYSICAL ABUSE</option>
-                                                        <option>MISSING/UNTRACEABLE</option>
-                                                        <option>RUNAWAY/ABSCONDER</option>
-                                                        <option>ILLEGAL EXTERNALIZATION</option>
-                                                        <option>DEATH CASE ASSISTANCE</option>
-                                                        <option>CONTRACT TERMINATION</option>
-                                                        <option>PRISON/POLICE/DEPORTATION LEGAL/CONSULAR ASSISTANCE</option>
-                                                        <option>SOCIAL MEDIA ABUSE</option>
-                                                        <option>MIGRANT MISCONDUCT</option>
-                                                        <option>RIOT/DEMONSTRATION</option>
-                                                        <option>CASE OVERDUE/UNRESOLVED</option>
-                                                        <option>FORCED LABOUR/HUMAN TRAFFICKING</option>
-                                                        <option>EXIT VISA ASSISTANCE</option>
-                                                        <option>INQUIRY</option>
-                                                        <option>GROUP CASE ASSISTANCE</option>
-                                                        <option>COMPLIMENT EMPLOYER/AGENCY/GOVERNMENT</option>
-                                                        <option>AGENCY ABUSE/VIOLATION</option>
-                                                        <option>FALSE ACCUSATION</option>
-                                                        <option>PSYCHIATRIC ASSISTANCE</option>
-                                                        <option>FALSE ACCUSATION</option>
-                                                        <option>TRAINING VIOLATION</option>
-                                                        <option>GENERAL/OTHER</option>
-                                                    </select>
+
+                                                    <select class="form-control" id="category_select" name="category"></select>
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-6">
@@ -476,10 +417,9 @@
                                                 </div>
                                             </div>
 
-                                            <br>
 
-                                            <label for="model_c_det" class="col-sm-6 col-form-label">Update Type</label>
-                                            <select class="form-control" id="model_c_reco">
+                                            <label for="model_c_det" class="col-sm-6 col-form-label" style="display: none">Update Type</label>
+                                            <select class="form-control" id="model_c_reco" style="display: none">
                                                 <option>Information Update</option>
                                                 <option>Verification/Counseling </option>
                                                 <option>Employer/Client</option>
@@ -515,19 +455,20 @@
                                                 <option>Recommendations</option>
                                                 <option>Close Resolved</option>
                                             </select>
-
-                                            <label for="model_c_det" class="col-sm-6 col-form-label">Case Closing/Final Remark</label>
-                                            <input type="text"  id="model_c_rema" placeholder="Case Closing/Final Remark" autocomplete="off" class="form-control placeholder-no-fix" >
+                                            <br>
+                                            <label for="model_c_det" class="col-sm-6 col-form-label">Officer Case Remarks</label>
+                                            <input type="text"  id="model_c_rema" placeholder="Officer Case Remarks" autocomplete="off" class="form-control placeholder-no-fix" >
                                             <label for="model_c_det" class="col-sm-6 col-form-label" style="display: none">Action</label>
                                             <input type="text"  id="model_c_action" placeholder="Action " autocomplete="off" class="form-control placeholder-no-fix" style="display: none">
                                             <label for="model_c_det" class="col-sm-6 col-form-label" style="display: none">Follow Up Date</label>
                                             <input type="text"  id="model_c_date" placeholder="YYYY-MM-DD" autocomplete="off" class="form-control placeholder-no-fix"  style="display: none">
+                                            <hr>
                                             <div>
-                                                <label>Case Status</label>                                                      
+                                                <label>Case Actions</label>                                                      
                                                 <select class="form-control" id="model_c_status"  onchange="setOfficerby()">
                                                     <option id="1">In-Progress</option>
-                                                    <option id="2">Assign Sub Officer</option>
-                                                    <option id="6">External Assignment</option>
+                                                    <option id="2">Assign Another Officer</option>
+                                                    <option id="6" style="display: none">External Assignment</option>
                                                     <option id="3">Stuck/More Assistance</option>
                                                     <option id="4">Close Case/ Resolved</option>
                                                     <option id="5">Just Compliment</option>
@@ -589,7 +530,7 @@
                                         <div class="modal-body">
                                             <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered" id="model_att_table">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-primary">
                                                         <tr>
                                                             <th>Ref ID</th>
                                                             <th>Name</th>
@@ -622,7 +563,7 @@
 
                                             <div class="table-responsive" style="display:none">
                                                 <table class="table mb-0 table-bordered" id="act_mw_table">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-primary">
                                                         <tr>
                                                             <th>Ref ID</th>
                                                             <th>Name</th>
@@ -648,7 +589,7 @@
                                         <div class="modal-body">
                                             <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered" id="subcase_mw_table" style="min-width: 100%">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-primary">
                                                         <tr>
                                                             <th>Date</th>
                                                             <th>User_ID</th>
@@ -673,7 +614,7 @@
                                         <div class="modal-body">
                                             <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered" id="cat_table" style="min-width: 100%">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-primary">
                                                         <tr>
                                                             <th>Name</th>
                                                             <th>Remove</th>
@@ -696,7 +637,7 @@
                                     <div class="tab-pane fade" id="nav-mail" role="tabpanel" aria-labelledby="nav-mail-tab">
                                         <div class="modal-body">
 
-                                           <div class="chat-container">
+                                            <div class="chat-container">
                                                 <div class="messages"  id="chat_div">
                                                     <div class="message bot" style="display: none">
                                                         <div class="text">Hello! How can I assist you today?</div>
@@ -757,7 +698,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -869,7 +810,7 @@
                                         <div class="modal-body">
                                             <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered" id="sub_model_att_table"style="width: 100%">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-primary">
                                                         <tr>
                                                             <th>Ref ID</th>
                                                             <th>Name</th>
@@ -927,8 +868,8 @@
                                     <div class="tab-pane fade" id="nav-chat" role="tabpanel" aria-labelledby="nav-chat-tab">
                                         <div class="modal-body">
 
-                                         
-                                           <div class="chat-container">
+
+                                            <div class="chat-container">
                                                 <div class="messages"  id="sub_chat_div">
                                                     <div class="message bot" style="display: none">
                                                         <div class="text">Hello! How can I assist you today?</div>

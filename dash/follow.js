@@ -234,7 +234,7 @@ function loadFollow() {
                         row += '<tr><td colspan="20" align="center">No data</td></tr>';
                     }
                     $("#follow_table").append(e_data);
-                    pager('follow_table');
+                    paginateTable('follow_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadFollow);
                 }
@@ -346,7 +346,7 @@ function loadFollow_lorgan(input) {
                         row += '<tr><td colspan="20" align="center">No data</td></tr>';
                     }
                     $("#follow_table").append(e_data);
-                    pager('follow_table');
+                    paginateTable('follow_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadFollow_lorgan);
                 }
@@ -457,7 +457,7 @@ function loadFollow_forgan(input) {
                         row += '<tr><td colspan="20" align="center">No data</td></tr>';
                     }
                     $("#follow_table").append(e_data);
-                    pager('follow_table');
+                    paginateTable('follow_table');
                 } catch (e) {
                     ShowError("Response Error", e, loadFollow_forgan);
                 }

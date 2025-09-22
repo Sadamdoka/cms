@@ -201,14 +201,15 @@ function getRandomNumbers() {
 function pager(input) {
     $('#' + input).DataTable({
         lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-        autoWidth: false,
-        scrollY: true,
-        scrollX: true,
-        responsive: false,
+        autoWidth: true,          // let DataTables calculate widths
+        scrollX: true,            // horizontal scroll enabled
+        scrollCollapse: true,     // collapse scroll if not needed
+        responsive: false,        // disable responsive to keep strict alignment
         ordering: true,
         info: true,
-        bDestroy: true,
-        destroy: true
+        paging: true,
+        destroy: true,            // allow reinitialization
+        fixedHeader: true         // keep header aligned
     });
 }
 
@@ -417,7 +418,7 @@ function loadAttachment(input, tbl, tbbody) {
     // Show a loading spinner in the table body
     $("#" + tbbody).html(`
         <tr>
-            <td colspan="8" align="center">
+            <td colspan="4" align="center">
                 <div class="spinner-border text-primary" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
@@ -434,10 +435,15 @@ function loadAttachment(input, tbl, tbbody) {
         success: function (response) {
             // Clear the table body
             $("#" + tbbody).empty();
+            //console.log(response)
 
             // Process and populate the table
-            if (!response || !response.files) {
-                $("#" + tbbody).html('<tr><td colspan="8" align="center">No data</td></tr>');
+            if (!response || !response.files || response.files.length === 0) {
+                $("#" + tbbody).html(`
+                    <tr>
+                        <td colspan="4" align="center">No data</td>
+                    </tr>
+                `);
                 return;
             }
 
@@ -445,7 +451,7 @@ function loadAttachment(input, tbl, tbbody) {
             const files = Array.isArray(response.files) ? response.files : [response.files];
 
             files.forEach((file) => {
-                const mediaContent = createMediaElement(file.item); // Directly call the function and return the element
+                const mediaContent = createMediaElement(file.item);
 
                 rows += `
                     <tr>
@@ -460,7 +466,7 @@ function loadAttachment(input, tbl, tbbody) {
             $("#" + tbbody).append(rows);
 
             // Apply pagination if necessary
-            pager(tbl);
+            //pager(tbl);
         },
         error: function (xhr, status, error) {
             console.error("Error in loadAttachment:", error);
@@ -468,7 +474,7 @@ function loadAttachment(input, tbl, tbbody) {
             // Show error message to the user
             $("#" + tbbody).html(`
                 <tr>
-                    <td colspan="8" align="center">
+                    <td colspan="4" align="center">
                         <span class="text-danger">An error occurred while loading attachments. Please try again.</span>
                     </td>
                 </tr>
@@ -476,6 +482,7 @@ function loadAttachment(input, tbl, tbbody) {
         }
     });
 }
+
 
 // Updated createMediaElement to return rendered media
 function createMediaElement(base64) {
@@ -500,12 +507,14 @@ function createMediaElement(base64) {
 
 // Utility to detect MIME type
 function detectMimeType(base64) {
-    if (base64.startsWith('/9j')) return 'image/jpeg';
-    if (base64.startsWith('iVBOR')) return 'image/png';
-    if (base64.startsWith('UklGR')) return 'audio/wav';
-    if (base64.startsWith('//uQ')) return 'audio/mpeg';
-    return 'application/octet-stream';
+    if (base64.startsWith('/9j')) return 'image/jpeg';     // JPEG
+    if (base64.startsWith('iVBOR')) return 'image/png';    // PNG
+    if (base64.startsWith('UklGR')) return 'audio/wav';    // WAV
+    if (base64.startsWith('//uQ')) return 'audio/mpeg';    // MP3 (common header)
+    if (base64.startsWith('SUQz')) return 'audio/mpeg';    // MP3 (ID3 tag header)
+    return 'application/octet-stream';                     // Fallback
 }
+
 
 
 function loadLogs(input, tbl, tbbody) {
@@ -1919,6 +1928,84 @@ function loadCategory() {
     }
 }
 
+
+
+
+function loadSelCategory(elm) {
+    try {
+        $.ajax({
+            url: url + "fetch/category/",
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $("#"+elm).html('<option disabled selected>Loading...</option>');
+            },
+            success: function (data) {
+                //console.log(data);
+                try {
+                    let options = '<option disabled selected>Select Category</option>';
+                    
+                    if (!isEmpty(data)) {
+                        var value = data.category;
+                        
+                        // if it's a single object
+                        if (!isJsonArray(value)) {
+                            options += '<option value="' + value.name + '">' + value.name + '</option>';
+                        } 
+                        // if it's an array
+                        else {
+                            $.each(data.category, function (index, value) {
+                                options += '<option value="' + value.name + '">' + value.name + '</option>';
+                            });
+                        }
+                    } else {
+                        options = '<option disabled selected>No categories found</option>';
+                    }
+
+                    $("#"+elm).html(options);
+
+                } catch (e) {
+                    console.log(e);
+                    //ShowError("Response Error", e, loadCategory);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $("#category_select").html('<option disabled selected>Error loading categories</option>');
+                if (ajaxOptions === 'timeout') {
+                    alert("ajax Error", "Connection Timeout");
+                } else {
+                    alert("ajax Error", "Sorry! Something wrong, please try again");
+                }
+            }
+        });
+    } catch (ex) {
+        alert("Exception", ex);
+    }
+}
+
+
+// Reusable pagination function
+function paginateTable(tableId) {
+    // Destroy any existing DataTable on this table
+    if ($.fn.DataTable.isDataTable('#' + tableId)) {
+        $('#' + tableId).DataTable().clear().destroy();
+    }
+
+    // Initialize DataTable with common settings
+    $('#' + tableId).DataTable({
+        lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+        autoWidth: false,
+        scrollX: true,
+        scrollCollapse: true,
+        responsive: false,
+        ordering: true,
+        info: true,
+        paging: true
+    });
+}
 
 
 
