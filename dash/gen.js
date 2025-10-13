@@ -213,6 +213,7 @@ function pager(input) {
     });
 }
 
+
 function idle_timeout() {
     const idleDurationSecs = 60; // X number of seconds
     const redirectUrl = 'index.html'; // Redirect idle users to this URL

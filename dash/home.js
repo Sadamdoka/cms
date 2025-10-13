@@ -287,7 +287,13 @@ function loadCases_Chart() {
                         createPieChart("pieChart", Object.keys(categoryCounts), Object.values(categoryCounts));
 
                     } else {
-                        //row += '<tr><td colspan="5" align="center">No data</td></tr>';
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'No Data Available',
+                            text: 'No data available at the moment to display.',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#3085d6'
+                        });
                     }
                     //$("#mw_case_table").append(e_data);
                     //pager('mw_case_table');
