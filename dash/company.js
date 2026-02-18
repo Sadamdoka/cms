@@ -210,7 +210,7 @@ function loadEmployer() {
 
                             e_data += '<tr>';
                             e_data += '<td>';
-                            e_data += '<button id="' + value.id + '" onclick="delUser(this)"  name="' + value.emp_id + '"    type="button"  class="btn btn-danger" >Delete</button>';
+                            e_data += '<button id="' + value.id + '" onclick="delEmp(this)"  name="' + value.emp_id + '"    type="button"  class="btn btn-danger" >Delete</button>';
                             e_data += '</td>';
                             e_data += '<td>' + getDate_formart(value.datereg) + '</td>';
                             e_data += '<td>' + value.id + '</td>';
@@ -225,7 +225,7 @@ function loadEmployer() {
                             $.each(data.employer, function (index, value) {
                                 e_data += '<tr>';
                                 e_data += '<td>';
-                                e_data += '<button id="' + value.id + '" onclick="delUser(this)"  name="' + value.emp_id + '"    type="button"  class="btn btn-danger" >Delete</button>';
+                                e_data += '<button id="' + value.id + '" onclick="delEmp(this)"  name="' + value.emp_id + '"    type="button"  class="btn btn-danger" >Delete</button>';
                                 e_data += '</td>';
                                 e_data += '<td>' + getDate_formart(value.datereg) + '</td>';
                                 e_data += '<td>' + value.id + '</td>';
@@ -330,7 +330,7 @@ function loadUsers(input) {
                     let i = 1;
                     let row = "";
                     if (!isEmpty(data)) {
-                        //console.log(data);
+                        console.log(data);
                         row += "";
                         var value = data.user;
                         if (!isJsonArray(value)) {
@@ -391,6 +391,12 @@ function loadUsers(input) {
 function setRoleString(input) {
     if (input === '1') {
         return 'Admin Rights';
+    } else if (input === '2') {
+        return 'Normal Rights';
+    } else if (input === '3') {
+        return 'Commissioner Rights';
+    } else if (input === '4') {
+        return 'Head EEU Rights';
     } else {
         return 'Normal Rights';
     }
@@ -563,7 +569,7 @@ function delUser() {
                 body: formdata,
                 method: 'POST'
             }).then(function (response) {
-        console.log('Response: ' + response.status);
+        console.log('Response: ' + response);
         if (response.status === 200) {
             alert("User Deleted");
         } else {
@@ -659,7 +665,7 @@ function addEmployer() {
 }
 
 
-function delUser(input) {
+function delEmp(input) {
 
 
     let id = $(input).attr("id");
