@@ -5,8 +5,8 @@
  */
 
 
-//var url = "https://ceemis.mglsd.go.ug:8443/api.ceemis/service/";
-var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/";
+var url = "https://ceemis.mglsd.go.ug:8443/api.ceemis/service/";
+//var url = "http://ceemis.mglsd.go.ug:8080/api.ceemis/service/";
 
 $(document).ready(function () {
     /**
